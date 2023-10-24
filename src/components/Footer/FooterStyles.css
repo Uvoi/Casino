@@ -1,0 +1,60 @@
+footer
+{
+  height: 400px;
+  /* background: linear-gradient(to bottom, #4e1899, #680BAB, #7A005C, #BC008D); */
+  background: linear-gradient(to bottom, #b13b93, #b20086, #7023a7, #6527bc);
+}
+
+#paying
+{
+  padding-top: 20px;
+  margin: 20px 100px;
+  display: flex;
+  justify-content:space-between;
+  list-style-type: none;
+}
+
+#logo_footer
+{
+  height: 130px;
+  display: inline-block;
+}
+
+#links
+{
+  display: inline-block;
+  list-style-type: none;
+  flex-direction: column;
+  color: white;
+}
+#links img
+{
+  height: 50px;
+  margin-top: 20px;
+}
+#about_us
+{
+  color: white;
+  display: inline;
+  margin: 0px 20px;
+  white-space: nowrap;
+}
+#about_us_text
+{
+  display: inline-block;
+  color: #aeaeae;
+}
+.foot
+{
+
+  display: flex;
+  margin: 40px 40px 0 40px;
+}
+
+#rights
+{
+  color: white;
+  margin: 20px 40px 0 0;
+  display: inline;
+  float: right;
+}

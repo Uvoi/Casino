@@ -1,0 +1,9 @@
+  
+  body
+  {
+      /* height: 1000px; */
+      background: linear-gradient(to right, #2C17B1, #da04b6, #7C07AA, #a00c40, #7A005C, #a10505);
+      background-size: 200% 200%;
+      animation: gradientAnimation 10s ease infinite;
+  }
+  
