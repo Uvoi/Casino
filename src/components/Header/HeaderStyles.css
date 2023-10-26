@@ -1,142 +1,176 @@
 #menu {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  opacity: 1;
+}
+
+.menu_el {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  opacity: 1;
+}
+
+.menu_el a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 1;
+}
+
+#header {
+  display: flex;
+  margin: 0;
+  height: 70px;
+  width: 100%;
+  font-size: 20px;
+  /* background-image: linear-gradient(to right, #4A11AE, #680BAB, #BC008D); */
+  /* overflow: hidden; */
+  align-items: stretch;
+}
+
+.menu_el :hover
+{
+    color: white;
+    transition: 1s;
+    background-color: #b30187;
+}
+
+#logo
+{
+  height: 100%;	
+  padding-top: 2px;
+
+}
+#user
+{	  
+
+    padding-top: 2px;
     height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    float: right;
+    padding-right: 20px;
+}
+#usr_name
+{
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+
+
+}
+#money
+{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+
+#money {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.bot_line::before,
+.bot_line::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  background-color: white;
+  bottom: -1px;
+  transition: width 0.3s ease-in-out;
+}
+
+.bot_line::before {
+  left: 0;
+}
+
+.bot_line::after {
+  right: 0;
+}
+
+.bot_line:hover::before,
+.bot_line:hover::after {
+  width: 50%;
+}
+
+
+
+#usr_text
+{
     padding: 0;
     margin: 0;
-    list-style-type: none;
-    opacity: 1;
-  }
-  
-  .menu_el {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    opacity: 1;
-  }
-  
-  .menu_el a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
-    color: #ffffff;
-    opacity: 1;
-  }
-  
-  #header {
-    display: flex;
-    margin: 0;
-    height: 70px;
-    width: 100%;
-    font-size: 20px;
-    /* background-image: linear-gradient(to right, #4A11AE, #680BAB, #BC008D); */
-    overflow: hidden;
-    align-items: stretch;
-  }
-  
-  .menu_el :hover
-  {
-      color: white;
-      transition: 1s;
-      background-color: #b30187;
-  }
+    display: inline-flex;
+    flex-direction: column;
+    float: right;
+}
 
-  #logo
-  {
-    height: 100%;	
-    padding-top: 2px;
-  
-  }
-  #user
-  {	
-      padding-top: 2px;
-      height: 100%;
-      float: right;
-      padding-right: 20px;
-  }
-  #usr_name
-  {
-      font-size: 18px;
-      margin: 0;
-      padding: 0;
-  
-  
-  }
-  #money
-  {
-      font-size: 16px;
-      margin: 0;
-      padding: 0;
-  }
-  
-  
-  
-  
-  #money {
-    position: relative;
-    display: inline-block;
+#currency_a, #usr_name_a
+{
     text-decoration: none;
-    color: #ffffff;
+    color: white;
+}
+
+
+
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  #money::before,
-  #money::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 1px;
-    background-color: white;
-    bottom: -1px;
-    transition: width 0.3s ease-in-out;
+  50% {
+    background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+}}
+
+#login
+{
+  color: white;
+  font-size: 18px;
+  display: inline-flex;
+  justify-content: right;
+  align-items: center;
+  position:static;
+  /* display: inline-block; */
   
-  #money::before {
-    left: 0;
-  }
-  
-  #money::after {
-    right: 0;
-  }
-  
-  #money:hover::before,
-  #money:hover::after {
-    width: 50%;
-  }
-  
-  
-  
-  #usr_text
-  {
-      padding: 0;
-      margin: 0;
-      display: inline-flex;
-      flex-direction: column;
-      float: right;
-  }
-  
-  #currency_a, #usr_name_a
-  {
-      text-decoration: none;
-      color: white;
-  }
-  
-  
-  @keyframes gradientAnimation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-  }}
-  
+}
+
+#login p
+{
+  position: relative;
+  margin: auto;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+#user
+{
+  display: none;
+  visibility: hidden;
+}
+
+#login
+{
+  color: white;
+  /* display: none;
+  visibility: hidden; */
+}

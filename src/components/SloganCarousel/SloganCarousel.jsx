@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './SloganCarouselStyles.css';
-import bm1 from './images/bauman1.jpg';
-import bm2 from './images/bauman2.jpg';
-import bm3 from './images/bauman3.jpg';
+import carousel1 from './images/carousel1.jpg';
+import carousel2 from './images/carousel2.jpg';
+import carousel3 from './images/carousel3.jpg';
+import carousel4 from './images/carousel4.jpg';
 
 const SloganCarousel = (props) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const images = [bm1, bm2, bm3];
+  const images = [carousel1, carousel2, carousel3, carousel4];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,10 +43,10 @@ const SloganCarousel = (props) => {
         onLoad={handleImageLoad}
       />
       <button className="prev-button" onClick={() => handleClick('prev')}>
-        ←
+        {/* ← */}
       </button>
       <button className="next-button" onClick={() => handleClick('next')}>
-        →
+        {/* → */}
       </button>
     </div>
   );

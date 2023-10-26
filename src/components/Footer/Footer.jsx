@@ -13,7 +13,7 @@ import vkLogo from './images/vk.png'
 const Footer = (props)=>
 {
     return(
-        <footer>
+        <footer className='sticky-bottom'>
 
             <ul id="paying">
                 <li className="paying_img"><img src={visaLogo} alt=""/></li>

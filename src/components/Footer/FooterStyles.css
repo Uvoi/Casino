@@ -3,6 +3,8 @@ footer
   height: 400px;
   /* background: linear-gradient(to bottom, #4e1899, #680BAB, #7A005C, #BC008D); */
   background: linear-gradient(to bottom, #b13b93, #b20086, #7023a7, #6527bc);
+  /* position: fixed; */
+
 }
 
 #paying
