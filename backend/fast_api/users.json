@@ -1,0 +1,27 @@
+[
+  {
+    "name": "user",
+    "email": "wer@gf",
+    "password": "qwerth"
+  },
+  {
+    "name": "user",
+    "email": "wer@gf\u0430",
+    "password": "qwerth"
+  },
+  {
+    "name": "user",
+    "email": "wer@gfbiba",
+    "password": "qwerth"
+  },
+  {
+    "name": "user",
+    "email": "fjddabfjs@f",
+    "password": "fgh"
+  },
+  {
+    "name": "user",
+    "email": "diovu2003@gmail.com",
+    "password": "qwert"
+  }
+]
