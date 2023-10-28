@@ -4,8 +4,6 @@ import "./LoginStyles.css"
 
 
 function Login() {
-  // axios.
-
 
   const [userData, setUserData] = useState({
     email: '',
