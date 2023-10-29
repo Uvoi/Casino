@@ -1,7 +1,10 @@
 from fastapi import HTTPException
 from fastapi import APIRouter
+from uuid import UUID, uuid4
 import json
 from user import * 
+from auth import *
+from endpoints.session import initialize_session
 
 
 router = APIRouter()
@@ -31,8 +34,15 @@ async def create_user(user: User):
     #Сохранить обновленные данные в файл
     save_users_to_file(existing_users)
 
-    return new_user["email"]
+    session = uuid4()
+    data = auth.SessionData(email_s=new_user["email"])
+    await auth.backend.create(session, data)
 
+    # Возвращаем идентификатор сессии для использования на фронтенде
+    return {
+        "email": new_user["email"],
+        "session_id": str(session)
+    }
 
 
 @router.get("/api/user/{user_email}", response_model = UserOut)
