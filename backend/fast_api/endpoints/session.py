@@ -2,7 +2,9 @@ import json
 from fastapi import APIRouter
 from fastapi import Response, Depends
 from uuid import UUID, uuid4
+from endpoints.login import create_user
 
+from user import User
 from auth import auth
 
 router = APIRouter()
@@ -12,9 +14,11 @@ router = APIRouter()
 @router.post("/api/create_session/")
 async def create_session(session_d : auth.SessionData, response : Response):
 
-    session = uuid4()
-    data = auth.SessionData(name_s = session_d.name_s, email_s = session_d.email_s, password_s = session_d.password_s)
+    data = auth.SessionData(name = session_d.name, email = session_d.email, password = session_d.password)
+    await create_user(data)
 
+
+    session = uuid4()
     await auth.backend.create(session, data)
     auth.cookie.attach_to_response(response, session)
 
