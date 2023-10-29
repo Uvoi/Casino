@@ -18,9 +18,9 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const apiUrl = 'http://127.0.0.1:8000/api/user';
+    const apiUrl = 'http://127.0.0.1:8000/api/create_session';
 
-    const userDataWithUsername = { email: userData.email, password: userData.password, name: 'user' };
+    const userDataWithUsername = {name: 'user', email: userData.email, password: userData.password };
 
     axios.post(apiUrl, userDataWithUsername)
       .then(response => {
@@ -29,6 +29,12 @@ function Login() {
       })
       .catch(error => console.error('Ошибка при создании пользователя:', error));
   };
+
+  
+
+
+
+
 
   return (
     <div id='login_page'>

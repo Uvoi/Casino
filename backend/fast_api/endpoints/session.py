@@ -11,7 +11,7 @@ router = APIRouter()
 
 
 
-@router.post("/api/create_session/")
+@router.post("/api/create_session")
 async def create_session(session_d : auth.SessionData, response : Response):
 
     data = auth.SessionData(name = session_d.name, email = session_d.email, password = session_d.password)
