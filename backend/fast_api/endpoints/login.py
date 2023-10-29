@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 import json
 from user import * 
 from auth import *
-from endpoints.session import initialize_session
+# from endpoints.session import initialize_session
 
 
 router = APIRouter()

@@ -8,8 +8,13 @@ from fastapi_sessions.frontends.implementations import SessionCookie, CookiePara
 
 
 class SessionData(BaseModel):
+    name_s: str
     email_s: str
+    password_s: str
 
+class SessionDataOut(BaseModel):
+    name_s: str
+    email_s: str
 
 cookie_params = CookieParameters()
 
