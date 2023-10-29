@@ -15,14 +15,17 @@ router = APIRouter()
 async def create_session(session_d : auth.SessionData, response : Response):
 
     data = auth.SessionData(name = session_d.name, email = session_d.email, password = session_d.password)
-    await create_user(data)
+    # await create_user(data)
 
+    new_data = auth.SessionData(name = str(await create_user(data)), email = session_d.email, password = session_d.password)
+    data = new_data
 
     session = uuid4()
     await auth.backend.create(session, data)
     auth.cookie.attach_to_response(response, session)
 
-    return f"created session for {session_d}"
+
+    return f"created session for {data}"
 
 
 

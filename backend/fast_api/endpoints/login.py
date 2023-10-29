@@ -16,14 +16,17 @@ async def create_user(user: User):
 
     # Проверить, существует ли пользователь с такой почтой
     for users in existing_users: 
-        if user.email == users["email"]:
+        if (user.email == users["email"]) and (user.password == users["password"]):
+            return(users["name"])
+        elif (user.email == users["email"]) and (user.password != users["password"]):
             # error = False
-            raise HTTPException(status_code=400, detail="Пользователь с такой почтой уже существует")
+            raise HTTPException(status_code=400, detail="Невеный пароль")
 
     new_user = {
         "name": user.name,
         "email": user.email,
-        "password": user.password
+        "password": user.password,
+        "money" : 0
     }
 
     # Добавить нового пользователя к существующим пользователям 
@@ -34,7 +37,7 @@ async def create_user(user: User):
 
 
 
-    return new_user["email"]
+    return user.name
 
 
 

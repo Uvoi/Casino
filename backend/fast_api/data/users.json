@@ -1,42 +1,32 @@
 [
   {
-    "name": "user",
-    "email": "wer@gf",
-    "password": "qwerth"
+    "name": "string",
+    "email": "string",
+    "password": "string",
+    "money": 0
   },
   {
     "name": "string",
-    "email": "buba@gg",
-    "password": "12"
+    "email": "ff",
+    "password": "string",
+    "money": 0
   },
   {
-    "name": "string",
-    "email": "strding",
-    "password": "string"
+    "name": "11",
+    "email": "22",
+    "password": "33",
+    "money": 0
   },
   {
-    "name": "string",
-    "email": "gg@ff",
-    "password": "string"
+    "name": "1",
+    "email": "2",
+    "password": "3",
+    "money": 0
   },
   {
-    "name": "f",
-    "email": "ggg@ff",
-    "password": "v"
-  },
-  {
-    "name": "12",
-    "email": "555",
-    "password": "vv"
-  },
-  {
-    "name": "ff",
-    "email": "eba",
-    "password": "ss"
-  },
-  {
-    "name": "rr",
-    "email": "xx",
-    "password": "aa"
+    "name": "5",
+    "email": "6",
+    "password": "7",
+    "money": 0
   }
 ]
