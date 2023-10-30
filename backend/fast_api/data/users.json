@@ -130,5 +130,23 @@
     "email": "qq@q",
     "password": "qq",
     "money": 0
+  },
+  {
+    "name": "user",
+    "email": "q@qq",
+    "password": "qq",
+    "money": 0
+  },
+  {
+    "name": "user",
+    "email": "fjhd@shjds",
+    "password": "qwer",
+    "money": 0
+  },
+  {
+    "name": "user",
+    "email": "ddsds@sdds",
+    "password": "dsds",
+    "money": 0
   }
 ]
