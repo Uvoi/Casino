@@ -164,13 +164,13 @@
 
 #user
 {
-  display: none;
-  visibility: hidden;
+  /* display: none;
+  visibility: hidden; */
 }
 
 #login
 {
-  color: white;
-  /* display: none;
-  visibility: hidden; */
+  /* color: white; */
+  display: none;
+  visibility: hidden;
 }

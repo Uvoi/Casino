@@ -1,152 +1,20 @@
 [
   {
-    "name": "string",
-    "email": "string",
-    "password": "string",
-    "money": 0
-  },
-  {
-    "name": "string",
-    "email": "ff",
-    "password": "string",
-    "money": 0
-  },
-  {
-    "name": "11",
-    "email": "22",
-    "password": "33",
-    "money": 0
-  },
-  {
-    "name": "1",
-    "email": "2",
-    "password": "3",
-    "money": 0
-  },
-  {
-    "name": "5",
-    "email": "6",
-    "password": "7",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "diovu2003@gmail.com",
-    "password": "qwerty",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "diovu20d03@gmail.com",
-    "password": "qdd",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "diovu200d@gmail.com",
-    "password": "wert",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "fdfd@fd",
-    "password": "fdfdf",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "",
-    "password": "",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "efef@dd",
-    "password": "gdgf",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "wewe@dwdw",
-    "password": "dwdw",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "biba@fd",
-    "password": "qwerty",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "dwewe@f",
-    "password": "2345",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "dwdw@dd",
-    "password": "sdsds",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "dsds@dsd",
-    "password": "string",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "dhdjj@dsd",
-    "password": "string",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "biba@biba",
-    "password": "qwerty",
-    "money": 0
-  },
-  {
     "name": "user",
     "email": "q@q",
     "password": "qq",
-    "money": 0
+    "money": 1000
   },
   {
     "name": "user",
-    "email": "fsfd@ff",
-    "password": "dfd",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "dds@fd",
-    "password": "qwwq",
-    "money": 0
-  },
-  {
-    "name": "string",
-    "email": "qq@q",
-    "password": "qq",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "q@qq",
-    "password": "qq",
-    "money": 0
-  },
-  {
-    "name": "user",
-    "email": "fjhd@shjds",
+    "email": "biba@qq",
     "password": "qwer",
     "money": 0
   },
   {
     "name": "user",
-    "email": "ddsds@sdds",
-    "password": "dsds",
+    "email": "biba@ff",
+    "password": "ff",
     "money": 0
   }
 ]

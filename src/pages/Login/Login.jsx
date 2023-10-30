@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./LoginStyles.css";
 
-function Login() {
+function Login({active, setActive}) {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -24,11 +24,12 @@ function Login() {
       password: userData.password,
     };
 
-    axios
-      .post(apiUrl, userDataWithUsername, { withCredentials: true })
+    axios.post(apiUrl, userDataWithUsername, { withCredentials: true })
       .then((response) => {
         console.log("Пользователь создан:", response.data);
         setUserData({ email: "", password: "" });
+        setActive(false)
+        window.location.reload();
       })
       .catch((error) =>
         console.error("Ошибка при создании пользователя:", error)

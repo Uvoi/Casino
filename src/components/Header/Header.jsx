@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import "./HeaderStyles.css"
 import logo from './images/logo.png'
 import user_logo from './images/usr_photo.png'
@@ -10,6 +11,61 @@ import Login from '../../pages/Login/Login';
 
 const Header = (props)=>
 {
+
+    const [money, setMoney] = useState(null);
+    const [user, setUser] = useState({ name: "", email: "" });
+    // var user = {email: "", name: ""}
+
+    useEffect(() => {
+        // Код, который нужно выполнить только один раз при загрузке страницы
+
+        axios.get('http://127.0.0.1:8000/api/whoami')
+        .then(response => {
+            setUser(response.data)
+            console.log("user: ", user, "succ")
+
+
+            axios.get('http://127.0.0.1:8000/api/get_money')
+                .then(response => {
+                console.log(response.data);
+                setMoney(response.data)
+                })
+                .catch(error => {
+                console.log("ошибка блять!");
+                console.log(error);
+                });
+
+
+
+            if ((user["name"] != "") && (user["email"] != "")) 
+            {
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('login').style.visibility = 'hidden';
+                document.getElementById('user').style.display = 'block';
+                document.getElementById('user').style.visibility = 'visible';
+                console.log("не пусто")
+            }
+        })
+        .catch(error => {
+            user["email"] = ""
+            user["name"] = ""
+            console.log(error);
+            console.log("user: ", user)
+            if((user["name"] == "") && (user["email"] == ""))
+            {
+                // Код для установки стилей, когда user пустой
+                document.getElementById('user').style.display = 'none';
+                document.getElementById('user').style.visibility = 'hidden';
+                document.getElementById('login').style.display = 'inline-flex';
+                document.getElementById('login').style.visibility = 'visible';
+                console.log("пусто")
+            }
+        });
+      }, []);
+
+
+
+
     const [modalActive, setModalActive] = useState(false)
     return(
         <div id="header" className="row">
@@ -27,13 +83,13 @@ const Header = (props)=>
         <div id="login" className="col-lg-3"><p className='bot_line' onClick={()=>setModalActive(true)}>вход/регистрация</p></div>
         <div id="user" className="col-lg-3">
             <div id="usr_text">
-                <a href="" id="usr_name_a"><p id="usr_name">Иван Иванов</p></a>
-                <a href="" id="currency_a"><p id="money" className='bot_line'>32.000 <span id="currency">✯</span></p></a>
+                <a href="" id="usr_name_a"><p id="usr_name">{user["name"]}</p></a>
+                <a href="" id="currency_a"><p id="money" className='bot_line'>{money}<span id="currency"> ✯</span></p></a>
             </div>
             <a href="/profile"><img id="user" src={user_logo} alt=""/></a>
         </div> 
         <Modal active = {modalActive} setActive={setModalActive}>
-            <Login/>
+            <Login active = {modalActive} setActive={setModalActive}/>
         </Modal>
     </div>
     );
