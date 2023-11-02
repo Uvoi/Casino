@@ -7,7 +7,7 @@ const Games = (props)=>
     return(
         <div>
             {/* <Header/> */}
-            <h1>huy</h1>
+            {/* <h1></h1> */}
         </div>
     );
 };

@@ -2,6 +2,7 @@ import json
 from fastapi import APIRouter, HTTPException, Response, Depends
 from uuid import UUID, uuid4
 from endpoints.login import create_user, load_users_from_file
+# from fastapi.responses import JSONResponse
 
 from user import User
 from auth import auth

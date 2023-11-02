@@ -20,7 +20,7 @@ async def create_user(user: User):
             return(users["name"])
         elif (user.email == users["email"]) and (user.password != users["password"]):
             # error = False
-            raise HTTPException(status_code=400, detail="Невеный пароль")
+            raise HTTPException(status_code=400, detail="Неверный пароль")
 
     new_user = {
         "name": user.name,

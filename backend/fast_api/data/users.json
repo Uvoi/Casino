@@ -1,9 +1,9 @@
 [
   {
-    "name": "user",
+    "name": "zhopaaaaa",
     "email": "q@q",
     "password": "qq",
-    "money": 1000
+    "money": 99000
   },
   {
     "name": "user",
@@ -15,6 +15,18 @@
     "name": "user",
     "email": "biba@ff",
     "password": "ff",
+    "money": 0
+  },
+  {
+    "name": "user",
+    "email": "q@qq",
+    "password": "ff",
+    "money": 0
+  },
+  {
+    "name": "user",
+    "email": "fdf@fdfdf",
+    "password": "qqq",
     "money": 0
   }
 ]

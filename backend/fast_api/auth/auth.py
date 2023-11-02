@@ -16,7 +16,7 @@ class SessionDataOut(BaseModel):
     name: str
     email: str
 
-cookie_params = CookieParameters()
+cookie_params = CookieParameters(path="/")
 
 # Uses UUID
 cookie = SessionCookie(
@@ -24,8 +24,9 @@ cookie = SessionCookie(
     identifier="general_verifier",
     auto_error=True,
     secret_key="bauman",
-    cookie_params=cookie_params,
+    cookie_params=cookie_params
 )
+
 backend = InMemoryBackend[UUID, SessionData]()
 
 

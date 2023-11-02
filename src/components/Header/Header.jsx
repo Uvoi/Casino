@@ -17,15 +17,13 @@ const Header = (props)=>
     // var user = {email: "", name: ""}
 
     useEffect(() => {
-        // Код, который нужно выполнить только один раз при загрузке страницы
-
-        axios.get('http://127.0.0.1:8000/api/whoami')
+        axios.get('http://127.0.0.1:8000/api/whoami', { withCredentials: true })
         .then(response => {
             setUser(response.data)
             console.log("user: ", user, "succ")
 
 
-            axios.get('http://127.0.0.1:8000/api/get_money')
+            axios.get('http://127.0.0.1:8000/api/get_money', { withCredentials: true })
                 .then(response => {
                 console.log(response.data);
                 setMoney(response.data)
@@ -47,19 +45,16 @@ const Header = (props)=>
             }
         })
         .catch(error => {
+            console.log("ошибкааааааааааааа")
             user["email"] = ""
             user["name"] = ""
-            console.log(error);
+            // console.log(error);
             console.log("user: ", user)
-            if((user["name"] == "") && (user["email"] == ""))
-            {
-                // Код для установки стилей, когда user пустой
-                document.getElementById('user').style.display = 'none';
-                document.getElementById('user').style.visibility = 'hidden';
-                document.getElementById('login').style.display = 'inline-flex';
-                document.getElementById('login').style.visibility = 'visible';
-                console.log("пусто")
-            }
+            document.getElementById('user').style.display = 'none';
+            document.getElementById('user').style.visibility = 'hidden';
+            document.getElementById('login').style.display = 'inline-flex';
+            document.getElementById('login').style.visibility = 'visible';
+            console.log("пусто")
         });
       }, []);
 

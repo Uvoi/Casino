@@ -20,6 +20,10 @@
 {
     height: 55px;
     font-size: 23px;
+}
+
+#input_login_1
+{
     margin-bottom: 40px;
 }
 
@@ -49,4 +53,10 @@
     color: white;
     background: #610443;
     border: none;
+}
+
+#exeption_login
+{
+    color: rgb(189, 0, 0);
+    font-size: 40px;
 }

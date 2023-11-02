@@ -3,6 +3,8 @@ import axios from "axios";
 import "./LoginStyles.css";
 
 function Login({active, setActive}) {
+  const [exeption, setExeption] = useState("");
+
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -28,11 +30,12 @@ function Login({active, setActive}) {
       .then((response) => {
         console.log("Пользователь создан:", response.data);
         setUserData({ email: "", password: "" });
-        setActive(false)
+        setActive(false);
         window.location.reload();
       })
       .catch((error) =>
-        console.error("Ошибка при создании пользователя:", error)
+        // setExeption(error.response.data.detail)
+        console.error("Ошибка при создании пользователя:", error),
       );
   };
 
@@ -41,6 +44,7 @@ function Login({active, setActive}) {
       <h1>Вход/Регистрация</h1>
       <form onSubmit={handleSubmit}>
         <input
+          id="input_login_1"        
           type="email"
           name="email"
           placeholder="Электронная почта"
@@ -48,12 +52,14 @@ function Login({active, setActive}) {
           onChange={handleChange}
         />
         <input
+          id="input_login_2"
           type="password"
           name="password"
           placeholder="Пароль"
           value={userData.password}
           onChange={handleChange}
         />
+        {/* <p id="exeption_login">{exeption}</p> */}
         <div id="but_login">
           <button type="submit">Далее</button>
         </div>
