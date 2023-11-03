@@ -3,6 +3,9 @@ import axios from "axios";
 import "./LoginStyles.css";
 
 function Login({active, setActive}) {
+
+  axios.defaults.withCredentials = true;
+  
   const [exeption, setExeption] = useState("");
 
   const [userData, setUserData] = useState({
@@ -33,10 +36,20 @@ function Login({active, setActive}) {
         setActive(false);
         window.location.reload();
       })
-      .catch((error) =>
-        // setExeption(error.response.data.detail)
-        console.error("Ошибка при создании пользователя:", error),
-      );
+      .catch((error) =>     
+      {   
+        if ((error.response.data.detail) && (error.response.status === 400))
+        {
+          setExeption(error.response.data.detail)
+        }
+        else
+        {
+          console.error("Ошибка при создании пользователя:", error)
+          setExeption("Неизвестная ошибка: бэкендер умер. Попробуйте позже!")
+        }
+        
+
+      });
   };
 
   return (
@@ -59,7 +72,7 @@ function Login({active, setActive}) {
           value={userData.password}
           onChange={handleChange}
         />
-        {/* <p id="exeption_login">{exeption}</p> */}
+        <p id="exeption_login">{exeption}</p>
         <div id="but_login">
           <button type="submit">Далее</button>
         </div>
