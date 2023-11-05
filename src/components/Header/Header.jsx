@@ -9,56 +9,37 @@ import Login from '../../pages/Login/Login';
 
 
 
-const Header = (props)=>
+const Header = ({User, Money})=>
 {
     axios.defaults.withCredentials = true;
-    
 
     const [money, setMoney] = useState(null);
     const [user, setUser] = useState({ name: "", email: "" });
-    // var user = {email: "", name: ""}
+    
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/whoami', { withCredentials: true })
-        .then(response => {
-            setUser(response.data)
-            console.log("user: ", user, "succ")
+        var info = {name:User["name"],
+        email: User["email"]}
 
+        setUser(User);
+        setMoney(Money);
 
-            axios.get('http://127.0.0.1:8000/api/get_money', { withCredentials: true })
-                .then(response => {
-                console.log(response.data);
-                setMoney(response.data)
-                })
-                .catch(error => {
-                console.log("ошибка блять!");
-                console.log(error);
-                });
+        if ((user["name"] != undefined) && (user["email"] != undefined)) 
+        {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('login').style.visibility = 'hidden';
+            document.getElementById('user').style.display = 'block';
+            document.getElementById('user').style.visibility = 'visible';
+        }
 
-
-
-            if ((user["name"] != "") && (user["email"] != "")) 
-            {
-                document.getElementById('login').style.display = 'none';
-                document.getElementById('login').style.visibility = 'hidden';
-                document.getElementById('user').style.display = 'block';
-                document.getElementById('user').style.visibility = 'visible';
-                console.log("не пусто")
-            }
-        })
-        .catch(error => {
-            console.log("ошибкааааааааааааа")
-            user["email"] = ""
-            user["name"] = ""
-            // console.log(error);
-            console.log("user: ", user)
+        if ((user["name"] == "") && (user["email"] == "")) 
+        {                           
             document.getElementById('user').style.display = 'none';
             document.getElementById('user').style.visibility = 'hidden';
             document.getElementById('login').style.display = 'inline-flex';
             document.getElementById('login').style.visibility = 'visible';
-            console.log("пусто")
-        });
-      }, []);
+        }
+      }, [Money, User]);
 
 
 
@@ -93,6 +74,5 @@ const Header = (props)=>
 };
 
 export default Header;
-
 
 

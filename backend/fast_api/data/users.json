@@ -40,5 +40,11 @@
     "email": "qu@Q",
     "password": "\u042f\u0421\u0423\u041a\u0410",
     "money": 0
+  },
+  {
+    "name": "user",
+    "email": "q@qf",
+    "password": "qqq",
+    "money": 0
   }
 ]
