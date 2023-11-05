@@ -12,6 +12,7 @@ import Login from '../../pages/Login/Login';
 const Header = (props)=>
 {
     axios.defaults.withCredentials = true;
+    
 
     const [money, setMoney] = useState(null);
     const [user, setUser] = useState({ name: "", email: "" });
