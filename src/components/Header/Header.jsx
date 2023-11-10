@@ -18,13 +18,10 @@ const Header = ({User, Money})=>
     
 
     useEffect(() => {
-        var info = {name:User["name"],
-        email: User["email"]}
-
         setUser(User);
         setMoney(Money);
 
-        if ((user["name"] != undefined) && (user["email"] != undefined)) 
+        if ((user["name"] !== undefined) && (user["email"] !== undefined)) 
         {
             document.getElementById('login').style.display = 'none';
             document.getElementById('login').style.visibility = 'hidden';
@@ -32,7 +29,7 @@ const Header = ({User, Money})=>
             document.getElementById('user').style.visibility = 'visible';
         }
 
-        if ((user["name"] == "") && (user["email"] == "")) 
+        if ((user["name"] === "") && (user["email"] === "")) 
         {                           
             document.getElementById('user').style.display = 'none';
             document.getElementById('user').style.visibility = 'hidden';
@@ -61,7 +58,7 @@ const Header = ({User, Money})=>
         <div id="login" className="col-lg-3"><p className='bot_line' onClick={()=>setModalActive(true)}>вход/регистрация</p></div>
         <div id="user" className="col-lg-3">
             <div id="usr_text">
-                <a href="" id="usr_name_a"><p id="usr_name">{user["name"]}</p></a>
+                <a href="/profile" id="usr_name_a"><p id="usr_name">{user["name"]}</p></a>
                 <a href="" id="currency_a"><p id="money" className='bot_line'>{money}<span id="currency"> ✯</span></p></a>
             </div>
             <a href="/profile"><img id="user" src={user_logo} alt=""/></a>
