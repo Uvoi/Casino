@@ -38,11 +38,11 @@ function App() {
     }, []);
 
 
-    
+
   return (
     <div className="App">
       <Header User = {user} Money={money} />
-      <Content/>
+      <Content User = {user} Money={money}/>
       <Footer/>
     </div>
   );

@@ -1,6 +1,6 @@
 [
   {
-    "name": "zhopaaaaa",
+    "name": "bhAf",
     "email": "q@q",
     "password": "qq",
     "money": 99000
@@ -45,6 +45,12 @@
     "name": "user",
     "email": "q@qf",
     "password": "qqq",
+    "money": 0
+  },
+  {
+    "name": "3\u043a\u0443\u043a\u043a\u0443\u043a\u0443",
+    "email": "q@qgg",
+    "password": "qq",
     "money": 0
   }
 ]

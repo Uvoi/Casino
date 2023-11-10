@@ -6,7 +6,7 @@ import Promo from '../../pages/Promo/Promo';
 import Contact from '../../pages/Contact/Contact'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-const Content = (props)=>
+const Content = ({User, Money})=>
 {
     return(
         <div id='Main_content'>
@@ -16,7 +16,7 @@ const Content = (props)=>
                     <Route exact path='/games' element={<Games />} />
                     <Route exact path='/prom o' element={<Promo />} />
                     <Route exact path='/contact' element={<Contact />} />
-                    <Route exact path='/profile' element={<Profile />} />
+                    <Route exact path='/profile' element={<Profile User={User}/>} />
                 </Routes>
             </Router>
         </div>

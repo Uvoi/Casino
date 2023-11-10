@@ -20,11 +20,38 @@
 {
     height: 55px;
     font-size: 23px;
+    box-shadow: 6px 6px #00000000;
+}
+
+#login_page input:focus
+{
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 6px 6px #00000000;
+    outline: none;
+}
+
+#login_page input:focus:valid
+{
+    box-shadow: 6px 6px green;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#login_page input:invalid, #ProfileP input:focus:invalid
+{
+  box-shadow: 6px 6px red;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#login_page input:valid
+{
+  box-shadow: 6px 6px #00000000;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 #input_login_1
 {
-    margin-bottom: 40px;
+    
+    margin: 60px 0 40px 0;
 }
 
 #but_login
@@ -37,7 +64,7 @@
 
 #login_page h1
 {
-    margin-top: 40px;
+    margin-top: 0px;
     font-size:35px;
 }
 
@@ -59,4 +86,8 @@
 {
     color: rgb(189, 0, 0);
     font-size: 40px;
+}
+#login_info
+{
+    padding: 0px;
 }
