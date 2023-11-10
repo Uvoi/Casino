@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import profile_photo from '../../images/profile_photo.jpg';
 import "./ProfileStyles.css";
 import axios from 'axios';
+import BanckCard from '../../components/BankCard/BankCard';
+import BanckCardReverse from '../../components/BankCard/BankCardReverse';
+
 
 const Profile = ({ User }) => {
     axios.defaults.withCredentials = true;
@@ -47,13 +50,17 @@ const Profile = ({ User }) => {
           <p>Электронная почта</p>
           <input type='text' id='profile_email' value={User.email} readOnly />
           <p>Имя</p>
-          <input type="text" id='profile_name' value={userName} pattern="^[a-zA-Z0-9]{4,16}$" onChange={(e) => setUserName(e.target.value)} />
+          <input type="text" id='profile_name' value={userName} pattern="^[a-zA-Z0-9\s]{4,16}$" onChange={(e) => setUserName(e.target.value)} />
           <div id="profile_but_save">
             <button onClick={handleSaveClick}>Сохранить</button>
           </div>
         </div>
       </div>
       <hr />
+      <div id="profile_cards">
+        <BanckCard/>
+        <BanckCardReverse/>
+      </div>
     </div>
   );
 };

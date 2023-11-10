@@ -6,3 +6,12 @@ body
     background-size: 200% 200%;
     animation: gradientAnimation 10s ease infinite;
 }
+
+input
+{
+    border: 0;
+}
+input:focus
+{
+    outline: none;
+}

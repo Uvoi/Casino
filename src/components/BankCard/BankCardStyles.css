@@ -1,0 +1,148 @@
+#BankCard
+{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+#credit_card
+{
+    height: 250px;
+    width: 425px;
+    background: #e61f6e;
+    border-radius: 10px;
+}
+#bank_name
+{
+    text-align: right;
+    margin: 4% 8%;
+}
+#card_chip div, #card_chip_reverse div
+{
+    height: 42px;
+    width: 54px;
+    background-color: #b1ae18;
+    border-radius: 15px;
+    margin: 6% 0 0 11%;
+}
+#card_number
+{
+    text-align: center;
+    margin-top: 4%;
+}
+#card_number input
+{
+    font-size: 30px;
+    width: 78%;
+    background: #ffffff00;
+    /* border-bottom: 1px solid black; */
+    color: white;
+    /* text-align: center;   */
+
+}
+#card_number input:focus, #card_date .react-datepicker__input-container input:focus, #card_name input:focus, #cardr_cvc input:focus
+{
+    border-bottom: 1px solid black;
+}
+
+#card_date .react-datepicker__input-container input 
+{
+    font-size: 15px;
+    color: white;
+    background-color: #ffffff00;
+    width: 45px;
+}
+
+#card_date
+{
+    text-align: center;
+}
+
+#card_name 
+{
+    text-align: left;
+    margin-left: 8%;
+}
+
+#card_name input
+{
+    width: 80%;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #ffffff00;
+    font-size: 20px;
+}div
+
+/* reverse */
+
+#cardr_black_line
+{
+    height: 45px;
+    width: 100%;
+    background: #000;
+    margin-top: 6%;
+
+}
+
+#card_chip_reverse div
+{
+    margin-top: 6px;
+    background-color: #ffea04;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+#card_chip_reverse
+{
+    display: inline-flex;
+    text-align: center;
+    
+}
+
+#cardr_cvc
+{
+    display: inline;
+}
+
+#globe_icon
+{
+    padding-top: 5px;
+    color: #bf9f00;
+}
+
+#cardr_cvc
+{
+    height: 30px;
+    display: inline-block;
+    width: 50%;
+    margin: 0 5px 0 10%;
+    background: repeating-linear-gradient(
+        180deg,
+        #fff78a,
+        #ff8fda 5px
+    );
+    text-align: right;
+
+}
+
+#cardr_cvc input
+{
+    width: 40px;
+    background-color: #ffffff00;
+    
+}
+#cardr_chip_n_cvc
+{
+    margin-top: 5%;
+}
+
+#BankCard input:invalid
+{
+    border-bottom: 3px solid rgb(228, 0, 0);
+}
+
+#card_fronts
+{
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -63,7 +63,6 @@
 {
   transition: box-shadow 0.3s ease-in-out;
   box-shadow: 6px 6px #00000000;
-  outline: none;
 
 }
 
@@ -83,4 +82,9 @@
 {
   box-shadow: 6px 6px #00000000;
   transition: box-shadow 0.3s ease-in-out;
+}
+#profile_cards
+{
+  display: flex;
+  justify-content: space-evenly;
 }
