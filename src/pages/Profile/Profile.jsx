@@ -28,22 +28,11 @@ const Profile = ({ User }) => {
         console.error('Ошибка при обновлении имени:', error);
       });
 
+    };
 
-    // axios.get('http://127.0.0.1:8000/api/get_money')
-    // .then(response => {
-    //     console.log("aaaaababab")
-    // })
-    // .catch(error => {
-    // console.log("ошибка блять!");
-    // console.log(error);
-    // });
-
-
-
-  };
 
   return (
-    <div>
+    <div id='Profile_wrapper'>
       <div id="ProfileP">
         <img id='profile_photo' src={profile_photo} alt="" />
         <div id="profile_data">
@@ -56,10 +45,11 @@ const Profile = ({ User }) => {
           </div>
         </div>
       </div>
-      <hr />
+      <hr/>
+      <h2>Пополнение и вывод средств</h2>
       <div id="profile_cards">
         <BanckCard/>
-        <BanckCardReverse/>
+        {/* <BanckCardReverse/> */}
       </div>
     </div>
   );

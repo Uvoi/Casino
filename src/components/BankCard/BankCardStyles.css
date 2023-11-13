@@ -1,4 +1,4 @@
-#BankCard
+.BankCard
 {
     display: flex;
     justify-content: center;
@@ -136,13 +136,82 @@
     margin-top: 5%;
 }
 
-#BankCard input:invalid
+
+.BankCard input:invalid
 {
     border-bottom: 3px solid rgb(228, 0, 0);
 }
 
-#card_fronts
+#Bank
 {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
+}
+
+#BankMoneyIO button
+{   
+    padding: 8px 30px;
+    color: white;
+    background: #610443;
+    border: none;
+    margin-right: 2%;
+    width: 150px;
+}
+
+#BankMoneyIO
+{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#IOmoneyi
+{
+    margin-right: 2%;
+    display: flex;
+    align-items: center;
+}
+#IOmoneyi input
+{
+    height: 100%;
+    font-size: 23px;
+    width: 140px;
+    padding: 0 5px;
+}
+
+#IOmoneyi span
+{
+    padding-right: 5px;
+    padding-top: 3px;
+    display: block;
+    font-size: 23px;
+    height: 100%;
+    /* width: 10px; */
+    background: #fff;
+    color: #e61f6e;
+}
+
+#moneyUD_error
+{
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    font-size: 20px;
+    background-color: #ffffff89;
+}
+
+#Bank_wrapper 
+{
+    text-align: center;
+}
+
+
+#Bank_wrapper #moneyUD_error
+{
+    margin-top: 20px;
+    padding: 0 5px;
+    text-align: center;
 }

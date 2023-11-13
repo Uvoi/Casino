@@ -45,7 +45,7 @@ function Login({ active, setActive }) {
         id="input_login_1"
         type="email"
         placeholder="Электронная почта"
-        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
