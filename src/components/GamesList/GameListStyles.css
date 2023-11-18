@@ -1,0 +1,26 @@
+.game_list
+{
+    height: 100%;
+    width: 100%;
+    display: inline-flex;
+    justify-content:space-around;
+    /* align-items:start; */
+    /* border: 3px solid black; */
+    flex-wrap: wrap;
+    padding: 0 100px;
+    /* background-color: #ff0000; */
+}
+
+.game_list h3
+{
+    color: #FFF;
+    width: 100%;
+    display: block;
+    margin: 0 0 10px 25px;
+
+}
+
+.game_list hr
+{
+    width: 100%;
+}

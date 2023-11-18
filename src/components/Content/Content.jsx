@@ -5,6 +5,7 @@ import Profile from '../../pages/Profile/Profile';
 import Promo from '../../pages/Promo/Promo';
 import Contact from '../../pages/Contact/Contact'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import GamePage from '../../pages/GamePage/GamePage';
 
 const Content = ({User, Money})=>
 {
@@ -17,6 +18,7 @@ const Content = ({User, Money})=>
                     <Route exact path='/prom o' element={<Promo />} />
                     <Route exact path='/contact' element={<Contact />} />
                     <Route exact path='/profile' element={<Profile User={User}/>} />
+                    <Route exact path='/game' element={<GamePage />} />
                 </Routes>
             </Router>
         </div>

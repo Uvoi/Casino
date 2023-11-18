@@ -3,7 +3,6 @@ import profile_photo from '../../images/profile_photo.jpg';
 import "./ProfileStyles.css";
 import axios from 'axios';
 import BanckCard from '../../components/BankCard/BankCard';
-import BanckCardReverse from '../../components/BankCard/BankCardReverse';
 
 
 const Profile = ({ User }) => {

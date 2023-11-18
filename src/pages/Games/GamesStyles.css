@@ -1,0 +1,9 @@
+#games-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#games-page .game_list
+{
+  margin-top: 5%;
+}
