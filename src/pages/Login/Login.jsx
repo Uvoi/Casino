@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./LoginStyles.css";
+import { motion } from "framer-motion";
+import { useNotification } from "../../components/Notification/Notification";
 
-function Login({ active, setActive }) {
+function Login({ active, setActive, ParentUpdate }) {
   axios.defaults.withCredentials = true;
+  const showNotification = useNotification();
 
   const [exeption, setExeption] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     const apiUrl = "http://127.0.0.1:8000/api/create_session";
 
     const userDataWithUsername = {
@@ -21,11 +25,14 @@ function Login({ active, setActive }) {
     axios
       .post(apiUrl, userDataWithUsername, { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setEmail("");
         setPassword("");
         setActive(false);
-        window.location.reload();
+        showNotification("Успешная авторизация", 'green')
+        // window.location.reload();
+        ParentUpdate();
+
       })
       .catch((error) => {
         if (error.response.data.detail && error.response.status === 400) {
@@ -39,13 +46,13 @@ function Login({ active, setActive }) {
 
   return (
     <div id="login_page">
-      <form>
+      <form onSubmit={handleLogin}>
       <h1>Вход/Регистрация</h1>
       <input
         id="input_login_1"
         type="email"
         placeholder="Электронная почта"
-        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        // pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -59,7 +66,14 @@ function Login({ active, setActive }) {
       />
       <p id="exeption_login">{exeption}</p>
       <div id="but_login">
-        <button onClick={handleLogin}>Далее</button>
+        <motion.button 
+          type="submit"
+          // initial = {{x: -100}}
+          // whileHover={{ x: 0}}
+          // transition={{
+          //   duration: 5,
+          // }}
+        >Далее</motion.button>
       </div>
       <p id="login_info">
         - Если у вас уже есть аккаунт с указанной почтой и введенный пароль

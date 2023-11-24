@@ -17,7 +17,7 @@ const Games = (props) => {
 
 
             <GameList title={"Популярные"}>
-                <GamePreview image = {gameImage1} title={'Наперстки'} link = {""}/>
+                <GamePreview image = {gameImage1} title={'Наперстки'} link = {"/games/shellgame"}/>
                 <GamePreview image = {gameImage2} title={'Игра 2'} link = {""}/>
                 <GamePreview image = {gameImage3} title={'Игра 3'} link = {""}/>
                 <GamePreview image = {gameImage4} title={'Игра 4'} link = {""}/>

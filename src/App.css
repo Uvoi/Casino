@@ -15,3 +15,11 @@ input:focus
 {
     outline: none;
 }
+
+button
+{
+    padding: 8px 30px;
+    color: white;
+    background: #610443;
+    border: none;
+}

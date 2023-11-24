@@ -9,7 +9,7 @@ import Login from '../../pages/Login/Login';
 
 
 
-const Header = ({User, Money})=>
+const Header = ({User, Money, ParentUpdate })=>
 {
     axios.defaults.withCredentials = true;
 
@@ -64,7 +64,7 @@ const Header = ({User, Money})=>
             <a href="/profile"><img id="user" src={user_logo} alt=""/></a>
         </div> 
         <Modal active = {modalActive} setActive={setModalActive}>
-            <Login active = {modalActive} setActive={setModalActive}/>
+            <Login active = {modalActive} setActive={setModalActive} ParentUpdate={ParentUpdate}/>
         </Modal>
     </div>
     );

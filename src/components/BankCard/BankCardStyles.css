@@ -195,6 +195,7 @@
 
 #moneyUD_error
 {
+    padding: 0 10px;
     display: inline-block;
     margin-top: 20px;
     text-align: center;
@@ -205,13 +206,5 @@
 
 #Bank_wrapper 
 {
-    text-align: center;
-}
-
-
-#Bank_wrapper #moneyUD_error
-{
-    margin-top: 20px;
-    padding: 0 5px;
     text-align: center;
 }

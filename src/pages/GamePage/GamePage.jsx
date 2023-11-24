@@ -1,10 +1,12 @@
 import React from 'react';
 import "./GamePageStyles.css"
-const GamePage = (props)=>
+const GamePage = ({children})=>
 {
     return(
         <div id='game_page'>
-            <div id="game"></div>
+            <div id="game">
+                {children}
+            </div>
         </div>
     );
 };

@@ -3,9 +3,10 @@ import "./BankCardStyles.css"
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
+import { useNotification } from '../../components/Notification/Notification';
 
 
-const BanckCard = ()=>
+const BanckCard = ({ParentUpdate})=>
 {
 
     
@@ -13,18 +14,13 @@ const BanckCard = ()=>
     const today = new Date();
     const firstDayOfCurrentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
     const lastDayOfMaxYear = new Date('2050-01-01');
-  
     const [selectedDate, setSelectedDate] = useState(null);
-
     const [fullName, setFullName] = useState("");
-
     const [cardNumber, setCardNumber] = useState('');
+    const [cardCode, setCardCode] = useState("");
+    const [moneyCount, setMoneyCount] = useState("");
 
-    const [cardCode, setCardCode] = useState(null);
-
-    const [moneyCount, setMoneyCount] = useState(null);
-
-    const [moneyError, setMoneyError] = useState("");
+    const showNotification = useNotification();
 
 
     const collectBankData = (operation) => {
@@ -46,17 +42,38 @@ const BanckCard = ()=>
           .then(response => {
             // Обработка успешного обновления
             console.log('Деньги успешно обновлены');
-            window.location.reload();
+            ParentUpdate();
+            // window.location.reload();
           })
           .catch(error => {
             // Обработка ошибки
             console.error('Ошибка при  Пополнении/Выводе:', error);
-            setMoneyError(error.response.data.detail)
+            showNotification(error.response.data.detail, 'red')
           });
+
+          if (operation == "moneyUp")
+          {
+              showNotification("Счёт успешно пополнен", 'green')
+          }
+          else if (operation == "moneyDown")
+          {
+              showNotification("Деньги успешно выведены", 'green')
+          }
+          else showNotification("Произошла неизвестная ошибка", 'red')
 
         } else {
           console.error('Заполните все обязательные поля');
+          showNotification("Заполните все поля", 'red')
         }
+
+
+        setSelectedDate(null);
+        setFullName("");
+        setCardNumber('');
+        setCardCode("");
+        setMoneyCount("");
+        
+
       };
 
     
@@ -156,8 +173,6 @@ const BanckCard = ()=>
                 <button onClick={collectBankData.bind(null, 'moneyUp')}>Пополнить</button>
                 <button onClick={collectBankData.bind(null, 'moneyDown')}>Вывести</button>
             </div>
-            {/* </form> */}
-            <p id='moneyUD_error'>{moneyError}</p>
         </div>
     );
 };

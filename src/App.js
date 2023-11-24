@@ -5,13 +5,19 @@ import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Content from './components/Content/Content';
-
+import { NotificationProvider } from './components/Notification/Notification';
 
 function App() {
   axios.defaults.withCredentials = true;
 
   const [money, setMoney] = useState(null);
   const [user, setUser] = useState({ name: "", email: "" });
+
+  const [isChildUpdate, setIsChildUpdate] = useState(false);
+
+  const childUpdate = () => {
+    setIsChildUpdate(!isChildUpdate);
+  };
 
   useEffect(() => {
       axios.get('http://127.0.0.1:8000/api/whoami')
@@ -32,19 +38,23 @@ function App() {
               });
       })
       .catch(error => {
-          console.log("ошибкааааааааааааа")
+          console.log("сессии нема")
           setUser("")
       });
-    }, []);
+      // setIsChildUpdate(false);
+    }, [isChildUpdate]);
 
 
 
   return (
+    
+    <NotificationProvider>
     <div className="App">
-      <Header User = {user} Money={money} />
-      <Content User = {user} Money={money}/>
+      <Header User = {user} Money={money} ParentUpdate={childUpdate}/>
+      <Content User = {user} Money={money} childUpdate={childUpdate}/>
       <Footer/>
     </div>
+    </NotificationProvider>
   );
 }
 

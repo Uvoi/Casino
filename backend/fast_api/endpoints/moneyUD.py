@@ -43,7 +43,7 @@ async def moneyUD(
             if int(found_user["money"]) >= int(card_money_count):
                 found_user["money"] = int(found_user["money"]) - int(card_money_count)
                 save_users_to_file(existing_users)
-            else: raise HTTPException(status_code=401, detail="Вы пытаетесь вывести больше денег чем имеете")
+            else: raise HTTPException(status_code=401, detail="Недостаточно средств")
 
         else : raise HTTPException(status_code=402, detail="invalid operation")
 
