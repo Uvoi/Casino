@@ -1,0 +1,83 @@
+#guessing_game
+{
+    text-align: center;
+    margin: 50px 200px ;
+}
+
+#guessing_game h1
+{
+    color: white;
+    margin-bottom: 50px;
+}
+
+#guessing_game_game
+{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#gg_row6, #gg_row5, #gg_row4, #gg_row3, #gg_row2, #gg_row1
+{
+    padding: 10px 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.gg_ball{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: rgba(211, 255, 251, 0.733);
+    margin: 0 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 34px;
+    /* color: rgba(99, 255, 99, 0.479); */
+}
+
+#guessing_game_money
+{
+    margin-top: 100px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+#guessing_game_money input
+{
+    font-size: 23px;
+    width: 120px;
+}
+#guessing_game_money span
+{
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 3.5px;
+    display: block;
+    font-size: 23px;
+    height: 100%;
+    background: #fff;
+    color: #e61f6e;
+}
+
+#guessing_game_money button
+{
+  margin-left: 10px;
+}
+
+
+#gg_row1, #gg_row2, #gg_row3
+{
+    background-color: #ff626240;
+} 
+#gg_row4, #gg_row5
+{
+    background-color: #e562ff40;
+}
+#gg_row6
+{
+    background-color: #a3daff40;
+}

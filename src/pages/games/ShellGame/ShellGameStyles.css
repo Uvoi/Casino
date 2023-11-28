@@ -64,16 +64,6 @@
   justify-content: center;
 }
 
-#ShellGame p
-{
-  padding: 0 10px;
-  display: inline-block;
-  margin-top: 20px;
-  text-align: center;
-  color: rgb(255, 0, 0);
-  font-size: 20px;
-  background-color: #ffffff89;
-}
 
 #shell_game_money span
 {
