@@ -36,12 +36,7 @@
 #ProfileP button
 {
   display: block;
-  margin-top: 100px;
-  padding: 8px 30px;
-  color: white;
-  background: #610443;
-  border: none;
-
+  margin-top: 100px;  
 }
 
 #profile_but_save

@@ -98,6 +98,23 @@ const BanckCard = ({ParentUpdate})=>
         setMoneyCount(value);
       };
 
+
+
+
+      const isValidFullName = (name) => {
+        // Проверка, что имя состоит только из букв и пробелов
+        return /^[a-zA-Z\s]{3,}$/.test(name);
+      };
+      
+      // Добавьте функции для проверки валидности номера карты и кода CVC (как в предыдущем ответе)
+      const isValidCardNumber = (number) => {
+        return /^\d{4} \d{4} \d{4} \d{4}$/.test(number);
+      };
+      
+      const isValidCVC = (cvc) => {
+        return /^\d{3,4}$/.test(cvc);
+      };
+
     return(
         <div id="Bank_wrapper">
             {/* <form> */}
@@ -170,8 +187,14 @@ const BanckCard = ({ParentUpdate})=>
                     />
                     <span>₽</span>
                 </div>
-                <button onClick={collectBankData.bind(null, 'moneyUp')}>Пополнить</button>
-                <button onClick={collectBankData.bind(null, 'moneyDown')}>Вывести</button>
+                <button onClick={collectBankData.bind(null, 'moneyUp')} 
+                title={(!selectedDate || !isValidFullName(fullName) || !isValidCardNumber(cardNumber) || !isValidCVC(cardCode)||!moneyCount) ? 'Заполните все поля' : 'Пополнить баланс'}
+                disabled={!selectedDate || !isValidFullName(fullName) || !isValidCardNumber(cardNumber) || !isValidCVC(cardCode)||!moneyCount}
+                >Пополнить</button>
+                <button onClick={collectBankData.bind(null, 'moneyDown')} 
+                title={(!selectedDate || !isValidFullName(fullName) || !isValidCardNumber(cardNumber) || !isValidCVC(cardCode)||!moneyCount) ? 'Заполните все поля' : 'Вывести средства'} 
+                disabled={!selectedDate || !isValidFullName(fullName) || !isValidCardNumber(cardNumber) || !isValidCVC(cardCode)||!moneyCount}
+                >Вывести</button>
             </div>
         </div>
     );

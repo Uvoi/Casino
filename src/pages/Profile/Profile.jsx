@@ -39,6 +39,12 @@ const Profile = ({ User, ParentUpdate }) => {
 
     };
 
+    const isValidFullName = (name) => {
+      return /^[a-zA-Z0-9\s]{4,16}$/.test(name);
+    };
+    
+
+
 
   return (
     <div id='Profile_wrapper'>
@@ -46,11 +52,14 @@ const Profile = ({ User, ParentUpdate }) => {
         <img id='profile_photo' src={profile_photo} alt="" />
         <div id="profile_data">
           <p>Электронная почта</p>
-          <input type='text' id='profile_email' value={User.email ? User.email : "" } readOnly />
+          <input type='text' id='profile_email' value={User.email ? User.email : "" } readOnly title='email нельзя изменить'/>
           <p>Имя</p>
           <input type="text" id='profile_name' value={userName ? userName : ""} pattern="^[a-zA-Z0-9\s]{4,16}$" onChange={(e) => setUserName(e.target.value)} />
           <div id="profile_but_save">
-            <button onClick={handleSaveClick}>Сохранить</button>
+            <button onClick={handleSaveClick} disabled={(User.name === userName || !isValidFullName(userName))} 
+            title={(!isValidFullName(userName) ? 'Запрещенный символ(ы)' : '') ||
+            (User.name === userName ? 'Внесите изменения' : 'Сохранить изменения')}
+            >Сохранить</button>
           </div>
         </div>
       </div>

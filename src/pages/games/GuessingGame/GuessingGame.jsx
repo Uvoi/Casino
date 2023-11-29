@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { useNotification } from '../../../components/Notification/Notification';
@@ -13,7 +13,7 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
     const [moneyCount, setMoneyCount] = useState("");
     const [curRow, setCurRow] = useState(0);
     const [isGame, setIsGame] = useState(false);
-    const [ggWin, setGgWin] = useState({winLine:0, bet:0})
+
 
 
     const rows = [
@@ -88,15 +88,12 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
         await setIsGame(true);
     }
 
-    const sendResultToServer = async(result) => {
-
-        
+    const sendResultToServer = async(result, row) => {
         const bet = (parseInt(moneyCount.replace(/\s/g, '')));
-        console.log(moneyCount);
         if (result == "win")
         {
-            var mult = multipliers[curRow];
-            document.getElementById("gg_row"+curRow).style.backgroundColor = "rgba(99, 255, 99, 0.479)";
+            var mult = multipliers[row];
+            document.getElementById("gg_row"+row).style.backgroundColor = "rgba(99, 255, 99, 0.479)";
 
         }
         else var mult = 0;
@@ -106,9 +103,8 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
           // Обработка успешного обновления
           console.log('Данные обновлены успешно');
           ParentUpdate();
-          if (result == "win"){showNotification("Вы выиграли "+Math.ceil(bet*multipliers[curRow])+"✯", 'green')}
+          if (result == "win"){showNotification("Вы выиграли "+Math.ceil(bet*multipliers[row])+"✯", 'green')}
           setIsGame(false);
-          setCurRow(0);
         })
         .catch(error => {
           // Обработка ошибки
@@ -118,19 +114,18 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
     }
 
 
-    const accesBall = async(raw, col) =>
+    const accesBall = async(row, col) =>
     {
-        if(raw==curRow+1 && isGame)
+        if(row==curRow+1 && isGame)
         {
-            setCurRow(raw);
-            handleBallClick(raw, col);
+            await setCurRow(row);
+            await handleBallClick(row, col);
         }
-        else if(raw<curRow+1 && isGame)
+        else if(row<curRow+1 && isGame)
         {
-            console.log(curRow)
             showNotification("Передвижение возможно только вперёд", 'red');
         }
-        else if(raw>curRow+1 && isGame)
+        else if(row>curRow+1 && isGame)
         {
             showNotification("Выбирайте путь последовательно", 'red');
         }
@@ -145,36 +140,33 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
     }
 
 
-    const handleBallClick = async (raw, col) => {
-        console.log("raw",raw,"col", col)
-
-
+    const handleBallClick = async (row, col) => {
         const bet = (parseInt(moneyCount.replace(/\s/g, '')));
-        axios.post('http://127.0.0.1:8000/api/games/guessinggame', {raw})
+        axios.post('http://127.0.0.1:8000/api/games/guessinggame', {row: row})
         .then(response => {
-          console.log('Данные обновлены успешно');
+          console.log('server response');
 
             if (response.data[col-1] == "1") {
-                console.log("win")
-                // showNotification("удача", 'green')
-
-                colorBallsInRow(raw-1, response.data)
-                if (ballRefs.current[raw-1] && ballRefs.current[raw-1][col-1].current) {
-                    ballRefs.current[raw-1][col-1].current.style.backgroundColor = 'green';
-                    ballRefs.current[raw-1][col-1].current.style.border = '2px solid white';
+                colorBallsInRow(row-1, response.data)
+                if (ballRefs.current[row-1] && ballRefs.current[row-1][col-1].current) {
+                    ballRefs.current[row-1][col-1].current.style.backgroundColor = 'green';
+                    ballRefs.current[row-1][col-1].current.style.border = '2px solid white';
+                }
+                if((curRow===6 && row===6) || (curRow===5 && row===6))
+                {
+                  sendResultToServer("win", row);
                 }
 
             } else {
-                colorBallsInRow(raw-1, response.data)
-                if (ballRefs.current[raw-1] && ballRefs.current[raw-1][col-1].current) {
-                    ballRefs.current[raw-1][col-1].current.style.backgroundColor = 'rgb(200, 0, 0)';
-                    ballRefs.current[raw-1][col-1].current.style.border = '2px solid white';
-                
-                    // Вставляем эмоджи 💣 внутрь дива
-                    ballRefs.current[raw-1][col-1].current.innerHTML = '💣';                    
+                colorBallsInRow(row-1, response.data)
+                if (ballRefs.current[row-1] && ballRefs.current[row-1][col-1].current) {
+                    ballRefs.current[row-1][col-1].current.style.backgroundColor = 'rgb(200, 0, 0)';
+                    ballRefs.current[row-1][col-1].current.style.border = '2px solid white';
+              
+                    ballRefs.current[row-1][col-1].current.innerHTML = '💣';                    
                 }
                 console.log("lose")
-                sendResultToServer("lose");
+                sendResultToServer("lose", row);
                 showNotification("Повезет в следующий раз", 'orange')
                 setIsGame(false);
                 setCurRow(0);
@@ -248,12 +240,21 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
                     placeholder="1 000 000"
                     onChange={(e) => formatMoneyInput(e.target.value)}
                     // disabled={shuffling}
+                    disabled = {isGame}
                 />
                 <span>✯</span>
-                <button onClick={() => checkMoney(moneyCount)} disabled={moneyCount==""|isGame}>
+                <button onClick={() => checkMoney(moneyCount)} disabled={moneyCount==""|isGame} 
+                  title={(moneyCount=="" ? 'Укажите ставку' : '') ||
+                  (isGame ? 'Завершите дейстующую игру' : 'Сделать ставку')}
+                >
                     {'Играть'}
                 </button>
-                <button onClick={() => sendResultToServer("win")} disabled={(moneyCount === "" || !(isGame && (curRow === 3 || curRow === 5 || curRow === 6)))}>
+                <button onClick={() => sendResultToServer("win", curRow)} disabled={(moneyCount === "" || !(isGame && (curRow === 3 || curRow === 5 || curRow === 6)))}
+                  title={(moneyCount=="" ? 'Укажите ставку' : '') ||
+                  (!isGame ? 'Начните игру(забрать выигрыш можно только на 3,5 или 6 ряду)': "")||
+                  (!(isGame && (curRow === 3 || curRow === 5 || curRow === 6)) ? 'Забрать выигрыш можно только на 3,5 или 6 ряду' : 'Забрать выигрыш')
+                  }
+                >
                     {'Забрать'}
                 </button>
             </div>

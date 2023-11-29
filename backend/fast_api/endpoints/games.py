@@ -22,7 +22,7 @@ class Shellgame_result(BaseModel):
     bet: int
 
 class GuessingGame(BaseModel):
-    raw: int
+    row: int
 
 class GuessingGame_result(BaseModel):
     result: str
@@ -81,7 +81,7 @@ async def shellgame_result(shellgame_result: Shellgame_result, session_data: aut
 @router.post("/api/games/guessinggame")
 async def guessinggame(game: GuessingGame):
 
-    RAWS = {
+    ROWS = {
         1: {'size': 2, 'num_ones': 2},
         2: {'size': 3, 'num_ones': 2},
         3: {'size': 3, 'num_ones': 2},
@@ -90,11 +90,11 @@ async def guessinggame(game: GuessingGame):
         6: {'size': 5, 'num_ones': 2},
     }
 
-    if game.raw not in RAWS:
-        raise HTTPException(status_code=499, detail="invalid raw")
+    if game.row not in ROWS:
+        raise HTTPException(status_code=499, detail="invalid row")
 
-    size = RAWS[game.raw]['size']
-    num_ones = RAWS[game.raw]['num_ones']
+    size = ROWS[game.row]['size']
+    num_ones = ROWS[game.row]['num_ones']
 
     array = [0] * size
 

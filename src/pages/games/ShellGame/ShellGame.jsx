@@ -25,6 +25,7 @@ const ShellGame = ({curMoney, ParentUpdate}) => {
   const controlsCup3 = useAnimation();
   const controlsBall = useAnimation();
   const containerRef = useRef(null);
+  const [isGame, setIsGame] = useState(false);
 
 
   useEffect(() => {
@@ -84,7 +85,7 @@ const ShellGame = ({curMoney, ParentUpdate}) => {
         console.error('Ошибка при  Пополнении/Выводе:', error);
       }
 
-
+      setIsGame(false);
       setIsChecked(true);
       // setCupsIsUp(true);
       await cupsUp()
@@ -115,6 +116,7 @@ const ShellGame = ({curMoney, ParentUpdate}) => {
   {
     if (curMoney >= (parseInt(bet.replace(/\s/g, ''))))
     {
+      setIsGame(true);
       handleShuffle();
     }
     else showNotification("Недостаточно средств", 'red');
@@ -202,8 +204,12 @@ const ShellGame = ({curMoney, ParentUpdate}) => {
           disabled={shuffling}
         />
         <span>✯</span>
-        <button onClick={() => checkMoney(moneyCount)} disabled={shuffling||moneyCount==""}>
-          {shuffling ? 'Перемешивание...' : 'Играть'}
+        <button onClick={() => checkMoney(moneyCount)} disabled={shuffling||moneyCount==""|| isGame}
+          title={(shuffling ? 'Перемешивание' : '') ||
+          (isGame ? 'Завершите дейстующую игру' : '')||
+          (moneyCount=="" ? 'Внесите ставку' : 'Сделать ставку')}
+        >
+          Играть
         </button>
       </div>
     </div>

@@ -16,10 +16,17 @@ input:focus
     outline: none;
 }
 
-button
-{
+button {
     padding: 8px 30px;
     color: white;
     background: #610443;
     border: none;
+    transition: background 0.3s, color 0.3s; /* добавлено свойство transition */
+}
+
+button:disabled {
+    color: rgb(155, 155, 155);
+    background: #8f0563;
+    cursor: not-allowed;
+    transition: background 0.3s, color 0.3s; /* добавлено свойство transition */
 }

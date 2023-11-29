@@ -12,7 +12,7 @@ import GuessingGame from '../../pages/games/GuessingGame/GuessingGame';
 const Content = ({User, Money, childUpdate})=>
 {
     return(
-        <div id='Main_content'>
+        <div id='Main_content' style={{ marginTop: '70px' }}>
             <Router>
                 <Routes>
                     <Route exact path='/' element={<Home />} />
