@@ -6,8 +6,8 @@ import Promo from '../../pages/Promo/Promo';
 import Contact from '../../pages/Contact/Contact'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import GamePage from '../../pages/GamePage/GamePage';
-import ShellGame from '../../pages/games/ShellGame/ShellGame';
-import GuessingGame from '../../pages/games/GuessingGame/GuessingGame';
+import ShellGame from '../../pages/gamesFolder/ShellGame/ShellGame';
+import GuessingGame from '../../pages/gamesFolder/GuessingGame/GuessingGame';
 
 const Content = ({User, Money, childUpdate})=>
 {
