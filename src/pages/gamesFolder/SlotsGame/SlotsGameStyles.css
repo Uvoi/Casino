@@ -1,0 +1,66 @@
+#sg_game
+{
+    /* text-align:center;
+    justify-content: center;
+    text-align: center; */
+}
+#sg_win_description_wrapper
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#sg_win_description
+{
+    margin-top: 2%;
+    padding-top: 1%;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    width: 40%;
+    background-color: rgba(204, 10, 155, 0.63);
+    border: 1px solid rgb(255, 255, 255);
+}
+.sg_win_description_cols
+{
+    align-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+}
+
+#slotsgame
+{
+    height: 90vh;
+}
+
+.svgs
+{
+    display: inline;
+    height: 20px;
+}
+
+#slots_wrapper
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+#slots
+{
+    width: 70%;
+    height: 35vh;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.slot
+{
+    height: 100%;
+    width: 33%;
+    background-color: #fff;
+}

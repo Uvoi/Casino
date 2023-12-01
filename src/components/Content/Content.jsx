@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import GamePage from '../../pages/GamePage/GamePage';
 import ShellGame from '../../pages/gamesFolder/ShellGame/ShellGame';
 import GuessingGame from '../../pages/gamesFolder/GuessingGame/GuessingGame';
+import SlotsGame from '../../pages/gamesFolder/SlotsGame/SlotsGame';
 
 const Content = ({User, Money, childUpdate})=>
 {
@@ -23,6 +24,7 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/game' element={<GamePage />} />
                     <Route exact path='/games/shellgame' element={<ShellGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/guessinggame' element={<GuessingGame curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/slotsgame' element={<SlotsGame curMoney={Money} ParentUpdate={childUpdate} />} />
                 </Routes>
             </Router>
         </div>

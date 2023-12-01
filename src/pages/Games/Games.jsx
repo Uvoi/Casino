@@ -20,7 +20,7 @@ const Games = (props) => {
                 <GamePreview image = {gameImage1} title={'Наперстки'} link = {"/games/shellgame"}/>
                 <GamePreview image = {gameImage2} title={'Игра 2'} link = {"/games/guessinggame"}/>
                 <GamePreview image = {gameImage3} title={'Игра 3'} link = {""}/>
-                <GamePreview image = {gameImage4} title={'Игра 4'} link = {""}/>
+                <GamePreview image = {gameImage4} title={'Игра 4'} link = {"/games/slotsgame"}/>
                 <GamePreview image = {gameImage1} title={'Игра 1'} link = {""}/>
                 <GamePreview image = {gameImage2} title={'Игра 2'} link = {""}/>
                 <GamePreview image = {gameImage3} title={'Игра 3'} link = {""}/>
