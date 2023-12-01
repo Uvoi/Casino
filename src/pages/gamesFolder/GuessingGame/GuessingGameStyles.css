@@ -81,3 +81,50 @@
 {
     background-color: #a3daff40;
 }
+
+#gg_description
+{
+    display: inline;
+    text-align: left;
+    font-size: 25px;
+}
+#gg_description_wrapper
+{
+
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
+}
+#gg_description ul 
+{
+    list-style-type:none;
+}
+
+.spanRow{
+    color: rgb(255, 255, 255);
+    /* font-weight: bold; */
+}
+
+#spanBetM1, #spanBetM2, #spanBetM3
+{
+    font-weight: bold;
+    -webkit-text-stroke: 1px #a30065;
+}
+
+#spanBetM1
+{
+    color: rgb(255, 255, 0);
+}
+
+#spanBetM2
+{
+    color: rgb(255, 123, 0);
+    font-size: 30px;
+}
+
+#spanBetM3
+{
+    color: rgb(255, 0, 0);
+    font-size: 35px;
+}

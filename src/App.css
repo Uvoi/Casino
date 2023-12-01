@@ -21,12 +21,24 @@ button {
     color: white;
     background: #610443;
     border: none;
-    transition: background 0.3s, color 0.3s; /* добавлено свойство transition */
+    transition: background 0.4s, color 0.4s; /* добавлено свойство transition */
+    /* border-radius: 1vh; */
 }
 
 button:disabled {
     color: rgb(155, 155, 155);
     background: #8f0563;
     cursor: not-allowed;
-    transition: background 0.3s, color 0.3s; /* добавлено свойство transition */
+    transition: background 0.4s, color 0.4s; /* добавлено свойство transition */
+}
+
+button:hover:enabled
+{
+    transition: background 0.4s;
+    background: rgb(117, 7, 13);
+}
+
+input:read-only
+{
+    color: rgb(73, 73, 73);
 }

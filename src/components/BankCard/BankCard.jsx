@@ -67,11 +67,11 @@ const BanckCard = ({ParentUpdate})=>
         }
 
 
-        setSelectedDate(null);
-        setFullName("");
-        setCardNumber('');
-        setCardCode("");
-        setMoneyCount("");
+        // setSelectedDate(null);
+        // setFullName("");
+        // setCardNumber('');
+        // setCardCode("");
+        // setMoneyCount("");
         
 
       };

@@ -31,8 +31,8 @@ const Footer = (props)=>
 
             <ul id="links">
                 <li><h6>Обратная связь</h6></li>
-                <li><a href=""><img src={telegramLogo} alt=""/></a></li>
-                <li><a href=""><img src={vkLogo} alt=""/></a></li>
+                <li><a href="https://t.me/nxrmql" target="_blank"><img src={telegramLogo} alt=""/></a></li>
+                <li><a href="https://vk.com/nxrmql" target="_blank"><img src={vkLogo} alt=""/></a></li>
             </ul>
 
             <h6 id="about_us">О нас</h6>

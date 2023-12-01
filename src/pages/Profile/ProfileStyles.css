@@ -4,6 +4,7 @@
     /* width: 300px; */
     /* display: inline; */
     margin-right: 70px;
+    /* border-radius: 5%; */
 }
 #ProfileP
 {
@@ -15,6 +16,7 @@
     justify-content: center;
     /* border: 1px solid black; */
     background-color: #ff4ebb4e;
+    border-radius: 2vh;
     
 }
 
@@ -52,6 +54,7 @@
   font-size: 23px;
   margin-top: 5px;
   box-shadow: 6px 6px #00000000;
+  border-radius: 1vh;
 }
 
 #ProfileP input:focus
@@ -82,7 +85,13 @@
 {
   color: white;
   text-align: center;
-  margin: 3% 0 4% 0;
+  margin: 5% 0 4% 0;
 
 
 }
+
+#Profile_wrapper
+{
+  margin-top: 15vh;
+}
+

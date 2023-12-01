@@ -28,8 +28,8 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
       const multipliers =
       {
         3: 1.5,
-        5: 2,
-        6: 3
+        5: 5,
+        6: 10
       }
 
       const ballRefs = useRef(Array.from({ length: rows.length }, () => Array.from({ length: 5 }, () => React.createRef())));
@@ -258,6 +258,14 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
                     {'Забрать'}
                 </button>
             </div>
+            <div id="gg_description_wrapper">
+                <div id="gg_description">
+                    <p>Суммы выигрыша:</p>
+                    <p><span className='spanRow'>3 ряд</span> - ставка<span id='spanBetM1'> × {multipliers[3]}</span></p>
+                    <p><span className='spanRow'>5 ряд</span> - ставка<span id='spanBetM2'> × {multipliers[5]}</span></p>
+                    <p><span className='spanRow'>6 ряд</span> - ставка<span id='spanBetM3'> × {multipliers[6]}</span></p>
+                </div>
+                </div>
         </div>
     </GamePage>
    );

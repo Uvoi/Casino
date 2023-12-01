@@ -39,6 +39,14 @@ const Header = ({User, Money, ParentUpdate })=>
       }, [Money, User]);
 
 
+      const formatMoney = (value) => {
+        if (value) {
+            value = value.toString().replace(/\D/g, '');
+            value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        }
+        return value;
+    };
+
 
 
     const [modalActive, setModalActive] = useState(false)
@@ -59,7 +67,7 @@ const Header = ({User, Money, ParentUpdate })=>
         <div id="user" className="col-lg-3">
             <div id="usr_text">
                 <a href="/profile" id="usr_name_a"><p id="usr_name">{user["name"]}</p></a>
-                <a href="" id="currency_a"><p id="money" className='bot_line'>{money}<span id="currency"> ✯</span></p></a>
+                <a href="" id="currency_a"><p id="money" className='bot_line'>{formatMoney(money)}<span id="currency"> ✯</span></p></a>
             </div>
             <a href="/profile"><img id="user" src={user_logo} alt=""/></a>
         </div> 
