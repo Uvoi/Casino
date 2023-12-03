@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+// import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { useNotification } from '../../../components/Notification/Notification';
 import './GuessingGameStyles.css';

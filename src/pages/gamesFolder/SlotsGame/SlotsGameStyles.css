@@ -1,9 +1,4 @@
-#sg_game
-{
-    /* text-align:center;
-    justify-content: center;
-    text-align: center; */
-}
+
 #sg_win_description_wrapper
 {
     width: 100%;
@@ -12,6 +7,7 @@
 }
 #sg_win_description
 {
+    text-align-last: left;
     margin-top: 2%;
     padding-top: 1%;
     justify-content: space-evenly;
@@ -33,7 +29,9 @@
 
 #slotsgame
 {
-    height: 90vh;
+    /* height: 90vh; */
+    text-align: center;
+    padding-bottom: 50px;
 }
 
 .svgs
@@ -53,14 +51,51 @@
 {
     width: 70%;
     height: 35vh;
-    background-color: blueviolet;
+    background-color: rgb(255, 1, 255);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    overflow: hidden;
+    border: 5px solid darkred;
 }
 .slot
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 2%; */
     height: 100%;
     width: 33%;
-    background-color: #fff;
+    background-color: #41000000;
+    /* border-right: 2px solid black; */
+}
+
+.slot_img
+{
+    height: 70%;
+    width: 70%;
+}
+
+#slots2
+{
+    position: absolute;
+    width: 70%;
+    height: 35vh;
+    background-color: rgba(255, 1, 255, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow: hidden;
+    border: 5px solid darkred;
+    z-index: 1000;
+}
+#slot21
+{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+#slotsgame h1{
+    color: white;
+    margin: 50px;
 }

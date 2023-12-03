@@ -5,6 +5,7 @@ from auth import auth
 from endpoints.login import load_users_from_file, save_users_to_file
 import random
 import math
+import numpy as np
 
 
 
@@ -28,6 +29,9 @@ class GuessingGame_result(BaseModel):
     result: str
     bet: int
     mult: float
+
+class SlotsGame(BaseModel):
+    bet: int
 
 
 
@@ -139,6 +143,45 @@ async def guessinggame_result(guessinggame_result: GuessingGame_result, session_
         else : raise HTTPException(status_code=402, detail="invalid operation")
 
         return {"message": "Money updated successfully"}
+
+
+
+    # Если пользователь не найден, бросьте исключение
+    raise HTTPException(status_code=468, detail="Serv error")
+
+
+@router.patch("/api/games/slotsgame", dependencies=[Depends(auth.cookie)])
+async def slotsgame(slots_game: SlotsGame, session_data: auth.SessionData = Depends(auth.verifier),session_id: UUID = Depends(auth.cookie)):
+
+    existing_users = load_users_from_file()
+    found_user = None
+    for user in existing_users:
+        if user["email"] == session_data.email:
+            found_user = user
+            break
+
+
+    random_numbers = [8,8,8]
+
+    if found_user is not None:
+
+        probabilities = [0.06, 0.08, 0.08, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18]
+
+        
+        if random.random() < 0.3:
+            element = random.choices(range(9), weights=probabilities)
+            random_numbers = element + element + element
+            found_user["money"] = int(found_user["money"]) + slots_game.bet*(9-element[0])
+            save_users_to_file(existing_users)
+
+        else:
+            random_numbers = random.choices(range(9), k=3)
+            found_user["money"] = int(found_user["money"]) - slots_game.bet
+            save_users_to_file(existing_users)
+
+
+        print(random_numbers)
+        return random_numbers
 
 
 
