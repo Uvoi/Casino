@@ -5,8 +5,7 @@ from auth import auth
 from endpoints.login import load_users_from_file, save_users_to_file
 import random
 import math
-import numpy as np
-
+from typing import List
 
 
 router = APIRouter()
@@ -33,6 +32,10 @@ class GuessingGame_result(BaseModel):
 class SlotsGame(BaseModel):
     bet: int
 
+class RouletteGame_result(BaseModel):
+    bet: int
+    sumOfMults: int
+    betsCount: int
 
 
 @router.get("/api/games/shellgame")
@@ -168,7 +171,7 @@ async def slotsgame(slots_game: SlotsGame, session_data: auth.SessionData = Depe
         probabilities = [0.06, 0.08, 0.08, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18]
 
         
-        if random.random() < 0.3:
+        if random.random() < 0.2:
             element = random.choices(range(9), weights=probabilities)
             random_numbers = element + element + element
             found_user["money"] = int(found_user["money"]) + slots_game.bet*(9-element[0])
@@ -187,3 +190,41 @@ async def slotsgame(slots_game: SlotsGame, session_data: auth.SessionData = Depe
 
     # Если пользователь не найден, бросьте исключение
     raise HTTPException(status_code=468, detail="Serv error")
+
+@router.patch("/api/games/roulettegame/result",  dependencies=[Depends(auth.cookie)])
+async def roulettegame_result(rg: RouletteGame_result, session_data: auth.SessionData = Depends(auth.verifier),session_id: UUID = Depends(auth.cookie)):
+    # return (shellgame_result.result, shellgame_result.bet)
+
+    existing_users = load_users_from_file()
+    found_user = None
+    for user in existing_users:
+        if user["email"] == session_data.email:
+            found_user = user
+            break
+
+    if found_user is not None:
+
+        found_user["money"] = int(found_user["money"]) + rg.bet*(rg.sumOfMults)
+        found_user["money"] = int(found_user["money"]) - rg.bet*rg.betsCount
+        save_users_to_file(existing_users)
+
+
+
+        return rg.bet*(rg.sumOfMults)-rg.bet*rg.betsCount
+    
+    else : raise HTTPException(status_code=402, detail="invalid operation")
+
+
+
+    # Если пользователь не найден, бросьте исключение
+    raise HTTPException(status_code=468, detail="Serv error")
+
+@router.get("/api/games/roulettegame")
+async def roulettegame():
+    res_num = random.randint(0, 37)
+    if res_num == 37:
+        res_num = "00"
+    else: 
+        res_num = str(res_num)
+
+    return res_num

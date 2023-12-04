@@ -1,0 +1,38 @@
+#roulete_r
+{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+#roulette_table
+{
+  width: 75%;
+  margin: auto; 
+}
+#roulette_game
+{
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+#roulette_game h1
+{
+  margin: 50px 0 50px 0;
+  color: #fff;
+}
+
+
+#roulette_game ::placeholder {
+  font-size: 16px; /* Размер текста placeholder */
+  color: #000000; /* Цвет текста placeholder */
+}
+/* .roulette-table-container 
+{
+  --red: #000 !important;
+  --black: #cc000e !important;
+}
+
+.rhomb-black
+{
+  background-color: #ff0000 !important;
+} */
