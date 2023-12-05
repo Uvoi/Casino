@@ -1,0 +1,37 @@
+#scratchgame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  #scratch_wrapper {
+    margin-top: 20px;
+  }
+  
+  #scratch {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку при нехватке места */
+    gap: 10px;
+    background-color: #ff4949;
+  }
+  
+  .scrg_square {
+    width: 110px; /* Фиксированная ширина */
+    height: 110px; /* Фиксированная высота */
+    background-color: #ddd;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-top: 10px; /* Отступ сверху между строками, кроме первой */
+  }
+  
+  /* Для первой строки уберем отступ сверху */
+  #scratch .scrg_square:nth-child(4n + 1) {
+    margin-top: 0;
+  }
+  
+  .scrg_square.selected {
+    border: 2px solid blue; /* Цвет и стиль рамки при нажатии */
+  }

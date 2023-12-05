@@ -10,6 +10,7 @@ import ShellGame from '../../pages/gamesFolder/ShellGame/ShellGame';
 import GuessingGame from '../../pages/gamesFolder/GuessingGame/GuessingGame';
 import SlotsGame from '../../pages/gamesFolder/SlotsGame/SlotsGame';
 import RouletteGame from '../../pages/gamesFolder/RouletteGame/RouletteGame';
+import ScratchGame from '../../pages/gamesFolder/ScratchGame/ScratchGame';
 
 const Content = ({User, Money, childUpdate})=>
 {
@@ -27,6 +28,7 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/games/guessinggame' element={<GuessingGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/slotsgame' element={<SlotsGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/roulettegame' element={<RouletteGame curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/scratchgame' element={<ScratchGame curMoney={Money} ParentUpdate={childUpdate} />} />
                 </Routes>
             </Router>
         </div>

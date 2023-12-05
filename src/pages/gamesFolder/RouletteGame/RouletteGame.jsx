@@ -196,7 +196,7 @@ const RouletteGame = ({curMoney, ParentUpdate}) => {
           <input
             value={moneyCount}
             id="guessing_game_input_money"
-            placeholder="размер ставки"
+            placeholder="Размер ставки"
             onChange={(e) => formatMoneyInput(e.target.value)}
           />
           <span>✯</span>

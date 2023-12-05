@@ -30,18 +30,18 @@ const slot_elements = [
 const SlotsGame = ({curMoney, ParentUpdate}) => {
   axios.defaults.withCredentials = true;
   const [moneyCount, setMoneyCount] = useState("");
+  const showNotification = useNotification();
+  const [isGame, setIsGame] = useState(false);
   const [slotResults, setSlotResults] = useState([0, 0, 0]); // Исходные позиции слотов
   const [slotResults2, setSlotResults2] = useState([1, 1, 1]); // Исходные позиции слотов
   const controlsArray = [useAnimation(), useAnimation(), useAnimation()];
   const controlsArray2 = [useAnimation(), useAnimation(), useAnimation()];
-  const [isGame, setIsGame] = useState(false);
   const refSlot0 = useRef();
   const refSlot1 = useRef();
   const refSlot2 = useRef();
   var resArray = [0, 0, 0];
   var res = -1;
-  const [curWin, setCurWin] = useState(-1);
-  const showNotification = useNotification();
+
   
   const refSlotsArray = [refSlot0, refSlot1, refSlot2];
 

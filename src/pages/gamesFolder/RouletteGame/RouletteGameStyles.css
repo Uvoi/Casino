@@ -26,6 +26,11 @@
   font-size: 16px; /* Размер текста placeholder */
   color: #000000; /* Цвет текста placeholder */
 }
+
+#roulette_game  input
+{
+  padding-left: 5px;
+}
 /* .roulette-table-container 
 {
   --red: #000 !important;

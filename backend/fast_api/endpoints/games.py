@@ -13,6 +13,8 @@ router = APIRouter()
 
 capabilities = [90, 66, 66, 50, 50, 40]
 
+scratchgame_ar = [[-1,-1,-1],[-1,-1,-1],[-1,-1,-1]]
+
 
 users_file = 'data/users.json'
 
@@ -37,6 +39,9 @@ class RouletteGame_result(BaseModel):
     sumOfMults: int
     betsCount: int
 
+class Scratchgame(BaseModel):
+    row: int
+    col: int
 
 @router.get("/api/games/shellgame")
 async def shellgame():
@@ -228,3 +233,57 @@ async def roulettegame():
         res_num = str(res_num)
 
     return res_num
+
+
+
+
+
+
+
+@router.patch("/api/games/scratchgame/result",  dependencies=[Depends(auth.cookie)])
+async def scratchgame_result(session_data: auth.SessionData = Depends(auth.verifier),session_id: UUID = Depends(auth.cookie)):
+    # return (shellgame_result.result, shellgame_result.bet)
+
+    existing_users = load_users_from_file()
+    found_user = None
+    for user in existing_users:
+        if user["email"] == session_data.email:
+            found_user = user
+            break
+
+    # if found_user is not None:
+
+    #     found_user["money"] = int(found_user["money"]) + rg.bet*(rg.sumOfMults)
+    #     found_user["money"] = int(found_user["money"]) - rg.bet*rg.betsCount
+    #     save_users_to_file(existing_users)
+
+
+    numbers = [0, 1, 2]
+    array = [[number for number in random.sample(numbers, len(numbers))] for _ in range(3)]
+    # return array
+    return array
+
+
+
+        # return rg.bet*(rg.sumOfMults)-rg.bet*rg.betsCount
+    
+    # else : raise HTTPException(status_code=402, detail="invalid operation")
+
+
+
+    # Если пользователь не найден, бросьте исключение
+    raise HTTPException(status_code=468, detail="Serv error")
+
+
+@router.post("/api/games/scratchgame_new")
+async def scratchgame():
+    global scratchgame_ar  # Добавляем global, чтобы указать, что используем глобальную переменную
+    numbers = [0, 1, 2]
+    scratchgame_ar = [[number for number in random.sample(numbers, len(numbers))] for _ in range(3)]
+    print(scratchgame_ar)
+    return {"message": "Array updated"}
+
+
+@router.post("/api/games/scratchgame")
+async def scratchgame(sg: Scratchgame):
+    return scratchgame_ar[sg.row][sg.col]
