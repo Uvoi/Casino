@@ -14,6 +14,7 @@
     "react-datepicker": "^4.21.0",
     "react-dom": "^18.2.0",
     "react-input-mask": "^2.0.4",
+    "react-roulette-pro": "^3.1.1",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.1",

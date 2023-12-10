@@ -11,11 +11,12 @@ import GuessingGame from '../../pages/gamesFolder/GuessingGame/GuessingGame';
 import SlotsGame from '../../pages/gamesFolder/SlotsGame/SlotsGame';
 import RouletteGame from '../../pages/gamesFolder/RouletteGame/RouletteGame';
 import ScratchGame from '../../pages/gamesFolder/ScratchGame/ScratchGame';
+import RouletteSliderGame from '../../pages/gamesFolder/RouletteSliderGame/RouletteSliderGame';
 
 const Content = ({User, Money, childUpdate})=>
 {
     return(
-        <div id='Main_content' style={{ marginTop: '10vh' }}>
+        <div id='Main_content' style={{ marginTop: '10vh', marginBottom: '10vh' }}>
             <Router>
                 <Routes>
                     <Route exact path='/' element={<Home />} />
@@ -29,6 +30,7 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/games/slotsgame' element={<SlotsGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/roulettegame' element={<RouletteGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/scratchgame' element={<ScratchGame curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/rouletteslidergame' element={<RouletteSliderGame curMoney={Money} ParentUpdate={childUpdate} />} />
                 </Routes>
             </Router>
         </div>

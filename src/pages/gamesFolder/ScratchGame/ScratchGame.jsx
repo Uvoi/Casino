@@ -1,5 +1,6 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect,} from 'react';
 import './ScratchGameStyles.css'
+import {motion} from 'framer-motion';
 import axios from 'axios';
 
 import seven_svg from '../../../images/svg-s/seven.svg';
@@ -28,17 +29,20 @@ const scratch_elements = [
     apple_svg,    //8
   ];
 
-const ScratchGame = (props)=>
+const ScratchGame = ({curMoney, ParentUpdate})=>
 {
+    axios.defaults.withCredentials = true;
     const squareRefs = useRef(Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => React.createRef())));
-    const [moneyCount, setMoneyCount] = useState("");
+
     const showNotification = useNotification();
     const [isGame, setIsGame] = useState(false);
-    const [gameResult, setGameResult] = useState(null); // Состояние для хранения результата игры
-    const [openedEls, setOpenedEls] = useState(0); // Состояние для хранения результата игры
-    const [isEnough, SetIsEnough] = useState(false); // Состояние для хранения результата игры
+    const [gameResult, setGameResult] = useState(null); 
+    const [openedEls, setOpenedEls] = useState(0); 
+    const [isEnough, SetIsEnough] = useState(false);
+    const [btnIndex, setBtnIndex] = useState(0); 
+    const [bets, setBets] = useState(0);
+
     
-    var enough = false;
 
 
 
@@ -46,6 +50,8 @@ const ScratchGame = (props)=>
         if (openedEls >= 3)
         {
             SetIsEnough(true);
+            resToServ(bets);
+            setIsGame(false);
         }
       }, [openedEls]);
   
@@ -56,15 +62,17 @@ const ScratchGame = (props)=>
     ];
   
     const play = () => {
-        clearSquares()
+        setIsGame(true);
+        clearSquares();
         setOpenedEls(0);
         SetIsEnough(false);
-        createArrServ();
+        createArrServ(btnIndex);
+        console.log(bets)
       };
 
-    const createArrServ = () => 
+    const createArrServ = (masNumber) => 
     {
-        axios.post('http://127.0.0.1:8000/api/games/scratchgame_new', axios.defaults.withCredentials = true)
+        axios.post('http://127.0.0.1:8000/api/games/scratchgame_new',{masNumber}, axios.defaults.withCredentials = true)
         .then(response => {
           console.log('Массив успешно создан на серваке');
         })
@@ -74,16 +82,27 @@ const ScratchGame = (props)=>
     }
 
 
-    const resToSert = () => 
+    const resToServ = (bet) => 
     {
     axios
-        .patch('http://127.0.0.1:8000/api/games/scratchgame/result', axios.defaults.withCredentials = true)
+        .patch('http://127.0.0.1:8000/api/games/scratchgame/result', {bet}, axios.defaults.withCredentials = true)
         .then(response => {
         // Обработка успешного обновления
         console.log('Данные обновлены успешно');
 
         // Установка результата игры в состояние
-        setGameResult(response.data);
+        setGameResult(response.data[0]);
+        if(response.data[1] < 0)
+        {
+          showNotification("Повезет в следующий раз", "orange")
+        }
+        else if (response.data[1] >= 0)
+        {
+          const win = response.data[1]+bets
+          showNotification("Вы выиграли "+win+"✯", "green")
+        }
+        ParentUpdate()
+        
 
         // setIsGame(false); // Возможно, вам нужно обновить другие состояния или выполнить другие действия
         })
@@ -93,14 +112,13 @@ const ScratchGame = (props)=>
         });
     }
 
-    const elClickToServ = (row = 0, col = 0) => {
+    const elClickToServ = (row = 0, col = 0, index = openedEls) => {
         axios
-          .post('http://127.0.0.1:8000/api/games/scratchgame', { row, col }, axios.defaults.withCredentials = true)
+          .post('http://127.0.0.1:8000/api/games/scratchgame', { row, col, index }, axios.defaults.withCredentials = true)
           .then(response => {
             console.log('сервак вернул', response.data);
             const imageIndex = response.data;
       
-            // Обновляем состояние результатов игры
             setGameResult(prevResult => {
               const newResult = prevResult ? [...prevResult] : Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => null));
               newResult[row][col] = imageIndex;
@@ -112,64 +130,55 @@ const ScratchGame = (props)=>
           });
       };
       
-
-    
-    
-    
-  
-
-  
-    const formatMoneyInput = (value) => {
-      value = value.replace(/\D/g, "");
-      value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-      setMoneyCount(value);
-    };
-  
     const accessSquare = (rowIndex, colIndex) => {
-        // console.log(`Clicked on square at row ${rowIndex + 1}, col ${colIndex + 1}`);
         elClickToServ(rowIndex, colIndex);
       
-        // Добавим класс для стилизации внутренней рамки
         const squareRef = squareRefs.current[rowIndex][colIndex];
         squareRef.current.classList.add("selected");
-
+    
         setOpenedEls(openedEls + 1)
-        // console.log(openedEls);
       };
 
- // Отдельная функция для отображения картинок в соответствии с результатами игры
  const renderSquareImage = (resultIndex) => {
     return resultIndex !== null ? scratch_elements[resultIndex] : null;
   };
 
   const clearSquares = () => {
-    // Очищаем содержимое квадратов и убираем внутренние рамки
     squareRefs.current.forEach(row => {
       row.forEach(squareRef => {
-        // Получаем изображение внутри квадрата
         const image = squareRef.current.querySelector('img');
-  
-        // Устанавливаем src в null, чтобы избежать ошибки при удалении
+
         if (image) {
           image.src = null;
         }
   
-        // Убираем внутреннюю рамку
         squareRef.current.classList.remove("selected");
       });
     });
   
-    // Очищаем состояние результатов игры
     setGameResult(null);
   };
   
+
+
+  const setBet = (index, count) =>
+  {
+      setBtnIndex(index);
+      setBets(count);
+  }
 
   
     return (
         <GamePage>
         <div id='scratchgame'>
+
+          <h1 style={{color:"white", marginBottom: "50px"}}>Скретч</h1>
+
+          <div id="scratchANDdescription">
+
+
           <div id="scratch_wrapper">
-            <div id="scratch" style={{ opacity: isEnough ? 0.5 : 1, pointerEvents: isEnough ? 'none' : 'auto' }}>
+            <div id="scratch" style={{ opacity: (isEnough | !isGame) ? 0.75 : 1, pointerEvents: (isEnough | !isGame) ? 'none' : 'auto' }}>
               {cols.map((col, colIndex) => (
                 <div key={`scrg_col${colIndex + 1}`} className="scratch_col">
                   {col.map((squareNumber, rowIndex) => {
@@ -183,7 +192,7 @@ const ScratchGame = (props)=>
                         onClick={() => accessSquare(rowIndex, colIndex)}
                         ref={squareRef}
                       >
-                        {resultIndex !== null && <img src={renderSquareImage(resultIndex)}/>}
+                        {resultIndex !== null && <motion.img src={renderSquareImage(resultIndex)} initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.5}}/>}
                       </div>
                     );
                   })}
@@ -191,20 +200,42 @@ const ScratchGame = (props)=>
               ))}
             </div>
           </div>
-          <div id="guessing_game_money">
-            <input
-              value={moneyCount}
-              id="guessing_game_input_money"
-              placeholder="1 000 000"
-              onChange={(e) => formatMoneyInput(e.target.value)}
-            />
-            <span>✯</span>
-            <button onClick={play} disabled={isGame | moneyCount === ""}>
-              Играть
-            </button>
+          <div id="scrg_win_description">
+                  <div className="scrg_win_description_cols">
+                      <p><img src={scratch_elements[0]} className="svgs" /><img src={scratch_elements[0]} className="svgs" /><img src={scratch_elements[0]} className="svgs" /> -  ×3</p>
+                      <p><img src={scratch_elements[3]} className="svgs" /><img src={scratch_elements[3]} className="svgs" /><img src={scratch_elements[3]} className="svgs" /> -  ×3</p>
+                      <p><img src={scratch_elements[6]} className="svgs" /><img src={scratch_elements[6]} className="svgs" /><img src={scratch_elements[6]} className="svgs" /> -  ×3</p>
+                  </div>
+                  <div className="scrg_win_description_cols">
+                      <p><img src={scratch_elements[1]} className="svgs" /><img src={scratch_elements[1]} className="svgs" /><img src={scratch_elements[1]} className="svgs" /> - ×5</p>
+                      <p><img src={scratch_elements[4]} className="svgs" /><img src={scratch_elements[4]} className="svgs" /><img src={scratch_elements[4]} className="svgs" /> - ×5</p>
+                      <p><img src={scratch_elements[7]} className="svgs" /><img src={scratch_elements[7]} className="svgs" /><img src={scratch_elements[7]} className="svgs" /> - ×5</p>
+                  </div>
+                  <div className="scrg_win_description_cols">
+                      <p><img src={scratch_elements[2]} className="svgs" /><img src={scratch_elements[2]} className="svgs" /><img src={scratch_elements[2]} className="svgs" /> - ×10</p>
+                      <p><img src={scratch_elements[5]} className="svgs" /><img src={scratch_elements[5]} className="svgs" /><img src={scratch_elements[5]} className="svgs" /> - ×10</p>
+                      <p><img src={scratch_elements[8]} className="svgs" /><img src={scratch_elements[8]} className="svgs" /><img src={scratch_elements[8]} className="svgs" /> - ×10</p>
+                  </div>
+              </div>
+
+
           </div>
-          <button onClick={clearSquares}>
-              очистить
+
+
+
+          <div id="scrg_money">
+
+            <button onClick={()=>setBet(1, 100)} disabled={isGame | btnIndex==1}>100✯</button>
+            <button onClick={()=>setBet(2, 300)} disabled={isGame | btnIndex==2}>300✯</button>
+            <button onClick={()=>setBet(3, 500)} disabled={isGame | btnIndex==3}>500✯</button>
+            <button onClick={()=>setBet(4, 1000)} disabled={isGame | btnIndex==4}>1 000✯</button>
+            <button onClick={()=>setBet(5, 5000)} disabled={isGame | btnIndex==5}>5 000✯</button>
+            <button onClick={()=>setBet(6, 20000)} disabled={isGame | btnIndex==6}>20 000✯</button>
+
+
+          </div>
+            <button onClick={play} disabled={isGame | !btnIndex} id='srcg_playBtn'>
+              Играть
             </button>
         </div>
       </GamePage>

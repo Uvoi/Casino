@@ -1,0 +1,40 @@
+#roulette_slider_game
+{
+    margin: 50px 0;
+    text-align: center;
+}
+
+#roulette_slider_game h1{
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+#rsg
+{
+    width: 80%;
+}
+
+#rsg_wrapper
+{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.roulette-pro-regular-prize-item-image
+{
+    /* height: 80%; */
+    padding: 10%;
+}
+#rsg_bets
+{
+    text-align: center;
+}
+
+#rsg_playBtn
+{
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px 30px !important;
+    font-size: 23px;
+    width: 135px;
+}
