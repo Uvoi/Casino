@@ -12,6 +12,7 @@ import SlotsGame from '../../pages/gamesFolder/SlotsGame/SlotsGame';
 import RouletteGame from '../../pages/gamesFolder/RouletteGame/RouletteGame';
 import ScratchGame from '../../pages/gamesFolder/ScratchGame/ScratchGame';
 import RouletteSliderGame from '../../pages/gamesFolder/RouletteSliderGame/RouletteSliderGame';
+import SlotsGameChristmas from '../../pages/gamesFolder/SlotsGame/themes/SlotsGameChristmas';
 
 const Content = ({User, Money, childUpdate})=>
 {
@@ -21,7 +22,7 @@ const Content = ({User, Money, childUpdate})=>
                 <Routes>
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/games' element={<Games />} />
-                    <Route exact path='/promo' element={<Promo />} />
+                    <Route exact path='/promo' element={<Promo curMoney={Money} ParentUpdate={childUpdate}/>} />
                     <Route exact path='/contact' element={<Contact />} />
                     <Route exact path='/profile' element={<Profile User={User} ParentUpdate={childUpdate}/>} />
                     <Route exact path='/game' element={<GamePage />} />
@@ -31,6 +32,7 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/games/roulettegame' element={<RouletteGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/scratchgame' element={<ScratchGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/rouletteslidergame' element={<RouletteSliderGame curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/SlotsGameChristmas' element={<SlotsGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
                 </Routes>
             </Router>
         </div>

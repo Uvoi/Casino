@@ -92,7 +92,6 @@ const prizes20000 = [
  
 
  
-const winPrizeIndex = 0;
  
 
 
@@ -104,7 +103,7 @@ const RouletteSliderGame = ({curMoney, ParentUpdate}) => {
   const [prizs, setPrizs] = useState(prizes20000);
   const [winIndex, setWinIndex] = useState(prizs.length * 4);
   const showNotification = useNotification();
-  // var prizes = prizes20000;
+
 
 
 
@@ -235,13 +234,20 @@ var prizeList = reproducedPrizeList.map((prize) => ({
 
   const setBet = async(index, count) =>
   {
+    
       setBtnIndex(index);
       setBets(count);
   }
 
   const play = async() => {
-    getResultForServ()
-    setIsGame(true);
+
+
+    if (curMoney >= (bets))
+    {
+      getResultForServ()
+      setIsGame(true);
+    }
+    else showNotification("Недостаточно средств", 'red');
     // handleStart()
     
     // console.log(prizeIndex)
@@ -257,7 +263,7 @@ var prizeList = reproducedPrizeList.map((prize) => ({
   return (
     <GamePage>
         <div id="roulette_slider_game">
-          <h1>baobab</h1>
+          <h1>Горизонтальная рулетка</h1>
             <div id="rsg_wrapper">
                 <div id="rsg">
                     <RoulettePro

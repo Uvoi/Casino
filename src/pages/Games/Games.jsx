@@ -11,6 +11,10 @@ import slots from '../../images/slots.jpg'
 import shell from '../../images/shell.jpg'
 import mine from '../../images/mine.jpg'
 import scratch from '../../images/scratch.jpg'
+import rouletteslider from '../../images/rouletteslider.png'
+
+
+
 
 
 
@@ -27,8 +31,8 @@ const Games = (props) => {
                 <GamePreview image = {roulette} title={'Рулетка'} link = {"/games/roulettegame"}/>
                 <GamePreview image = {slots} title={'Слоты'} link = {"/games/slotsgame"}/>
                 <GamePreview image = {scratch} title={'Скретч'} link = {"/games/scratchgame"}/>
-                <GamePreview image = {gameImage2} title={'Игра 2'} link = {"/games/rouletteslidergame"}/>
-                <GamePreview image = {gameImage3} title={'Игра 3'} link = {""}/>
+                <GamePreview image = {rouletteslider} title={'Горизонтальная рулетка'} link = {"/games/rouletteslidergame"}/>
+                <GamePreview image = {gameImage3} title={'Новогодние слоты'} link = {"/games/SlotsGameChristmas"}/>
                 <GamePreview image = {gameImage4} title={'Игра 4'} link = {""}/>
                 <GamePreview image = {gameImage1} title={'Наперстки'} link = {""}/>
                 <GamePreview image = {gameImage2} title={'Игра 2'} link = {""}/>

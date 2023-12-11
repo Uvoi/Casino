@@ -27,7 +27,7 @@ const slot_elements = [
   apple_svg,    //8
 ];
 
-const SlotsGame = ({curMoney, ParentUpdate}) => {
+const SlotsGame = ({curMoney, ParentUpdate, title="Слоты", slot_els = slot_elements}) => {
   axios.defaults.withCredentials = true;
   const [moneyCount, setMoneyCount] = useState("");
   const showNotification = useNotification();
@@ -65,20 +65,20 @@ const SlotsGame = ({curMoney, ParentUpdate}) => {
 
   const animateSlot = async (controls, index, timeWork) => {
     for (let i = 0; i < timeWork; i++) {
-      await controls.start({ y: [0, -220], transition: { duration: 0.1, ease: 'easeInOut' } });
+      await controls.start({ y: [0, -250], transition: { duration: 0.1, ease: 'easeInOut' } });
     }
   };
 
   const animateSlot2 = async (controls, index, timeWork) => {
     for (let i = 0; i < timeWork; i++) {
-      const newResult = Math.floor(Math.random() * slot_elements.length);
+      const newResult = Math.floor(Math.random() * slot_els.length);
       setSlotResults2((prevResults) => prevResults.map((prevResult, i) => (i === index ? newResult : prevResult)));
-      await controls.start({ y: [220, 0], transition: { duration: 0.1, ease: 'linear' } });
+      await controls.start({ y: [250, 0], transition: { duration: 0.1, ease: 'linear' } });
     }
 
     const newResult2 = resArray[index];
     setSlotResults2((prevResults) => prevResults.map((prevResult, i) => (i === index ? newResult2 : prevResult)));
-    await controls.start({ y: [220, 0], transition: { duration: 0.1, ease: 'easeInOut' } });
+    await controls.start({ y: [250, 0], transition: { duration: 0.1, ease: 'easeInOut' } });
 
     if (index === 2) {
       setIsGame(false);
@@ -96,16 +96,20 @@ const SlotsGame = ({curMoney, ParentUpdate}) => {
   
 
   const playSlots = async () => {
-    setIsGame(true);
-    await resForServ();
-
-    controlsArray.forEach((controls, index) => {
-      animateSlot(controls, index, (index + 1) * 10);
-    });
-
-    controlsArray2.forEach((controls, index) => {
-      animateSlot2(controls, index, (index + 1) * 10);
-    });
+    if (curMoney >= (parseInt(moneyCount.replace(/\s/g, ''))))
+    {
+      setIsGame(true);
+      resForServ();
+  
+      controlsArray.forEach((controls, index) => {
+        animateSlot(controls, index, (index + 1) * 10);
+      });
+  
+      controlsArray2.forEach((controls, index) => {
+        animateSlot2(controls, index, (index + 1) * 10);
+      });
+    }
+    else showNotification("Недостаточно средств", 'red');
   };
 
   const resForServ = () => {
@@ -133,26 +137,26 @@ const SlotsGame = ({curMoney, ParentUpdate}) => {
     <GamePage>
       <div id='slotsgame'>
 
-        <h1>Слоты</h1>
+        <h1>{title}</h1>
 
         <div id="sg_game">
 
           <div id="sg_win_description_wrapper">
               <div id="sg_win_description">
                   <div className="sg_win_description_cols">
-                      <p><img src={slot_elements[0]} className="svgs" /><img src={slot_elements[0]} className="svgs" /><img src={slot_elements[0]} className="svgs" /> - ×10</p>
-                      <p><img src={slot_elements[1]} className="svgs" /><img src={slot_elements[1]} className="svgs" /><img src={slot_elements[1]} className="svgs" /> - ×9</p>
-                      <p><img src={slot_elements[2]} className="svgs" /><img src={slot_elements[2]} className="svgs" /><img src={slot_elements[2]} className="svgs" /> - ×8</p>
+                      <p><img src={slot_els[0]} className="svgs" /><img src={slot_els[0]} className="svgs" /><img src={slot_els[0]} className="svgs" /> - ×10</p>
+                      <p><img src={slot_els[1]} className="svgs" /><img src={slot_els[1]} className="svgs" /><img src={slot_els[1]} className="svgs" /> - ×9</p>
+                      <p><img src={slot_els[2]} className="svgs" /><img src={slot_els[2]} className="svgs" /><img src={slot_els[2]} className="svgs" /> - ×8</p>
                   </div>
                   <div className="sg_win_description_cols">
-                      <p><img src={slot_elements[3]} className="svgs" /><img src={slot_elements[3]} className="svgs" /><img src={slot_elements[3]} className="svgs" /> - ×7</p>
-                      <p><img src={slot_elements[4]} className="svgs" /><img src={slot_elements[4]} className="svgs" /><img src={slot_elements[4]} className="svgs" /> - ×6</p>
-                      <p><img src={slot_elements[5]} className="svgs" /><img src={slot_elements[5]} className="svgs" /><img src={slot_elements[5]} className="svgs" /> - ×5</p>
+                      <p><img src={slot_els[3]} className="svgs" /><img src={slot_els[3]} className="svgs" /><img src={slot_els[3]} className="svgs" /> - ×7</p>
+                      <p><img src={slot_els[4]} className="svgs" /><img src={slot_els[4]} className="svgs" /><img src={slot_els[4]} className="svgs" /> - ×6</p>
+                      <p><img src={slot_els[5]} className="svgs" /><img src={slot_els[5]} className="svgs" /><img src={slot_els[5]} className="svgs" /> - ×5</p>
                   </div>
                   <div className="sg_win_description_cols">
-                      <p><img src={slot_elements[6]} className="svgs" /><img src={slot_elements[6]} className="svgs" /><img src={slot_elements[6]} className="svgs" /> - ×4</p>
-                      <p><img src={slot_elements[7]} className="svgs" /><img src={slot_elements[7]} className="svgs" /><img src={slot_elements[7]} className="svgs" /> - ×3</p>
-                      <p><img src={slot_elements[8]} className="svgs" /><img src={slot_elements[8]} className="svgs" /><img src={slot_elements[8]} className="svgs" /> - ×2</p>
+                      <p><img src={slot_els[6]} className="svgs" /><img src={slot_els[6]} className="svgs" /><img src={slot_els[6]} className="svgs" /> - ×4</p>
+                      <p><img src={slot_els[7]} className="svgs" /><img src={slot_els[7]} className="svgs" /><img src={slot_els[7]} className="svgs" /> - ×3</p>
+                      <p><img src={slot_els[8]} className="svgs" /><img src={slot_els[8]} className="svgs" /><img src={slot_els[8]} className="svgs" /> - ×2</p>
                   </div>
               </div>
           </div>
@@ -163,7 +167,7 @@ const SlotsGame = ({curMoney, ParentUpdate}) => {
           <motion.div key={index} className="slot" id={`slot${index}`}>
             <motion.img
               ref={refSlot}
-              src={slot_elements[slotResults[index]]}
+              src={slot_els[slotResults[index]]}
               alt={`slot${index}`}
               className='slot_img'
               animate={controlsArray[index]}
@@ -181,7 +185,7 @@ const SlotsGame = ({curMoney, ParentUpdate}) => {
                   // animate={controlsArray2[index]}
                 >
                   <motion.img 
-                  src={slot_elements[slotResults2[index]]} 
+                  src={slot_els[slotResults2[index]]} 
                   alt={`slot${index}`} 
                   className='slot_img' animate={controlsArray2[index]}/>
                 </motion.div>

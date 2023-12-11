@@ -62,12 +62,18 @@ const ScratchGame = ({curMoney, ParentUpdate})=>
     ];
   
     const play = () => {
+      if (curMoney >= bets)
+      {
         setIsGame(true);
         clearSquares();
         setOpenedEls(0);
         SetIsEnough(false);
         createArrServ(btnIndex);
         console.log(bets)
+      }
+      else showNotification("Недостаточно средств", 'red');
+
+
       };
 
     const createArrServ = (masNumber) => 

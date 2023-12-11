@@ -81,11 +81,14 @@ const RouletteGame = ({curMoney, ParentUpdate}) => {
 
   const clearBets = () => 
   {
-
     setBetsCount(0);
     setBets({});
     setBetM({});
     setResMults([])
+    controls.start({
+      rotate:0,
+      transition:{ duration: 0}
+    })
   }
 
   const checkBets = () =>
@@ -165,6 +168,15 @@ const RouletteGame = ({curMoney, ParentUpdate}) => {
     });
   }
 
+  const play = () =>
+  {
+    if (curMoney >= (parseInt(moneyCount.replace(/\s/g, '')))*Object.keys(betM).length)
+    {
+      res_for_serv()
+    }
+    else showNotification("Недостаточно средств", 'red');
+  }
+
   
   
 
@@ -200,7 +212,7 @@ const RouletteGame = ({curMoney, ParentUpdate}) => {
             onChange={(e) => formatMoneyInput(e.target.value)}
           />
           <span>✯</span>
-          <button onClick={res_for_serv} disabled={isGame| moneyCount=="" | Object.keys(betM).length == 0}>Играть</button>
+          <button onClick={play} disabled={isGame| moneyCount=="" | Object.keys(betM).length == 0}>Играть</button>
           <button type="button" onClick={clearBets} disabled={isGame}> Очистить поле</button>
         </div>
 
