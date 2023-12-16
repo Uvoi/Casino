@@ -7,7 +7,7 @@ import { useNotification } from '../../../components/Notification/Notification';
 
 
 
-const ShellGame = ({curMoney, ParentUpdate}) => {
+const ShellGame = ({curMoney, ParentUpdate, ballIco="", cupIco="", title="Игра в наперстки"}) => {
 
   axios.defaults.withCredentials = true;
   const showNotification = useNotification();
@@ -169,7 +169,7 @@ const ShellGame = ({curMoney, ParentUpdate}) => {
 
     <GamePage>
     <div id="ShellGame">
-      <h1>Игра в наперстки</h1>
+      <h1>{title}</h1>
       <div id="cups-container" ref={containerRef}>
 
           <motion.div
@@ -177,21 +177,21 @@ const ShellGame = ({curMoney, ParentUpdate}) => {
             animate = {controlsCup1}
             onClick={() => handleCupClick(0)}
             // initial={cupsUp}
-          >{ballPosition == 0 && !shuffling && <motion.div className="ball" animate={controlsBall}  initial={{opacity:0}}/>}
+          >{cupIco}{ballPosition == 0 && !shuffling && <motion.div className="ball" animate={controlsBall}  initial={{opacity:0}}>{ballIco}</motion.div>}
           </motion.div>
 
           <motion.div
             className={`cup`}
             animate = {controlsCup2}
             onClick={() => handleCupClick(1)}
-          >{ballPosition == 1 && !shuffling && <motion.div className="ball" animate={controlsBall}  initial={{opacity:0}}/>}
+          >{cupIco}{ballPosition == 1 && !shuffling && <motion.div className="ball" animate={controlsBall}  initial={{opacity:0}}>{ballIco}</motion.div>}
           </motion.div>
 
           <motion.div
             className={`cup`}
             animate = {controlsCup3}
             onClick={() => handleCupClick(2)}
-          >{ballPosition == 2 && !shuffling && <motion.div className="ball" animate={controlsBall}  initial={{opacity:0}}/>}
+          >{cupIco}{ballPosition == 2 && !shuffling && <motion.div className="ball" animate={controlsBall}  initial={{opacity:0}}>{ballIco}</motion.div>}
           </motion.div>
 
       </div>

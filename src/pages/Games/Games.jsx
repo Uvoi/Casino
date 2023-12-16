@@ -12,6 +12,9 @@ import shell from '../../images/shell.jpg'
 import mine from '../../images/mine.jpg'
 import scratch from '../../images/scratch.jpg'
 import rouletteslider from '../../images/rouletteslider.png'
+import christmas_slots from '../../images/games_themes/slots_game/christmas_slots.jpg';
+import christmas_shell from '../../images/games_themes/shell_game/shell_game_christmas.jpg';
+import christmas_scratch from '../../images/games_themes/scratch_game/scratch.jpg'
 
 
 
@@ -32,9 +35,9 @@ const Games = (props) => {
                 <GamePreview image = {slots} title={'Слоты'} link = {"/games/slotsgame"}/>
                 <GamePreview image = {scratch} title={'Скретч'} link = {"/games/scratchgame"}/>
                 <GamePreview image = {rouletteslider} title={'Горизонтальная рулетка'} link = {"/games/rouletteslidergame"}/>
-                <GamePreview image = {gameImage3} title={'Новогодние слоты'} link = {"/games/SlotsGameChristmas"}/>
-                <GamePreview image = {gameImage4} title={'Игра 4'} link = {""}/>
-                <GamePreview image = {gameImage1} title={'Наперстки'} link = {""}/>
+                <GamePreview image = {christmas_slots} title={'Новогодние слоты'} link = {"/games/SlotsGameChristmas"}/>
+                <GamePreview image = {christmas_shell} title={'Новогодние наперстки'} link = {"/games/ShellGameChristmas"}/>
+                <GamePreview image = {christmas_scratch} title={'Новогодний скретч'} link = {"/games/ScratchGameChristmas"}/>
                 <GamePreview image = {gameImage2} title={'Игра 2'} link = {""}/>
                 <GamePreview image = {gameImage3} title={'Игра 3'} link = {""}/>
                 <GamePreview image = {gameImage4} title={'Игра 4'} link = {""}/>

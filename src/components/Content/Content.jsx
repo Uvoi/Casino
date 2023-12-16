@@ -13,6 +13,8 @@ import RouletteGame from '../../pages/gamesFolder/RouletteGame/RouletteGame';
 import ScratchGame from '../../pages/gamesFolder/ScratchGame/ScratchGame';
 import RouletteSliderGame from '../../pages/gamesFolder/RouletteSliderGame/RouletteSliderGame';
 import SlotsGameChristmas from '../../pages/gamesFolder/SlotsGame/themes/SlotsGameChristmas';
+import ShellGameChristmas from '../../pages/gamesFolder/ShellGame/themes/ShellGameChristmas';
+import ScratchGameChristmas from '../../pages/gamesFolder/ScratchGame/themes/ScratchGameChristmas';
 
 const Content = ({User, Money, childUpdate})=>
 {
@@ -33,6 +35,8 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/games/scratchgame' element={<ScratchGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/rouletteslidergame' element={<RouletteSliderGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/SlotsGameChristmas' element={<SlotsGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/ShellGameChristmas' element={<ShellGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/ScratchGameChristmas' element={<ScratchGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
                 </Routes>
             </Router>
         </div>

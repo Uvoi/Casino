@@ -17,7 +17,7 @@ import GamePage from '../../GamePage/GamePage';
 import { useNotification } from '../../../components/Notification/Notification';
 
 
-const scratch_elements = [
+var scratch_elements = [
     seven_svg, //0
     bar_svg,  //1
     diamond_svg,    //2
@@ -29,8 +29,12 @@ const scratch_elements = [
     apple_svg,    //8
   ];
 
-const ScratchGame = ({curMoney, ParentUpdate})=>
+
+  
+
+const ScratchGame = ({curMoney, ParentUpdate, scratch_els=scratch_elements, title="Скретч"})=>
 {
+
     axios.defaults.withCredentials = true;
     const squareRefs = useRef(Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => React.createRef())));
 
@@ -146,7 +150,7 @@ const ScratchGame = ({curMoney, ParentUpdate})=>
       };
 
  const renderSquareImage = (resultIndex) => {
-    return resultIndex !== null ? scratch_elements[resultIndex] : null;
+    return resultIndex !== null ? scratch_els[resultIndex] : null;
   };
 
   const clearSquares = () => {
@@ -178,7 +182,7 @@ const ScratchGame = ({curMoney, ParentUpdate})=>
         <GamePage>
         <div id='scratchgame'>
 
-          <h1 style={{color:"white", marginBottom: "50px"}}>Скретч</h1>
+          <h1 style={{color:"white", marginBottom: "50px"}}>{title}</h1>
 
           <div id="scratchANDdescription">
 
@@ -207,20 +211,20 @@ const ScratchGame = ({curMoney, ParentUpdate})=>
             </div>
           </div>
           <div id="scrg_win_description">
-                  <div className="scrg_win_description_cols">
-                      <p><img src={scratch_elements[0]} className="svgs" /><img src={scratch_elements[0]} className="svgs" /><img src={scratch_elements[0]} className="svgs" /> -  ×3</p>
-                      <p><img src={scratch_elements[3]} className="svgs" /><img src={scratch_elements[3]} className="svgs" /><img src={scratch_elements[3]} className="svgs" /> -  ×3</p>
-                      <p><img src={scratch_elements[6]} className="svgs" /><img src={scratch_elements[6]} className="svgs" /><img src={scratch_elements[6]} className="svgs" /> -  ×3</p>
+          <div className="scrg_win_description_cols">
+                      <p><img src={scratch_els[0]} className="svgs" /><img src={scratch_els[0]} className="svgs" /><img src={scratch_els[0]} className="svgs" /> -  ×3</p>
+                      <p><img src={scratch_els[3]} className="svgs" /><img src={scratch_els[3]} className="svgs" /><img src={scratch_els[3]} className="svgs" /> -  ×3</p>
+                      <p><img src={scratch_els[6]} className="svgs" /><img src={scratch_els[6]} className="svgs" /><img src={scratch_els[6]} className="svgs" /> -  ×3</p>
                   </div>
                   <div className="scrg_win_description_cols">
-                      <p><img src={scratch_elements[1]} className="svgs" /><img src={scratch_elements[1]} className="svgs" /><img src={scratch_elements[1]} className="svgs" /> - ×5</p>
-                      <p><img src={scratch_elements[4]} className="svgs" /><img src={scratch_elements[4]} className="svgs" /><img src={scratch_elements[4]} className="svgs" /> - ×5</p>
-                      <p><img src={scratch_elements[7]} className="svgs" /><img src={scratch_elements[7]} className="svgs" /><img src={scratch_elements[7]} className="svgs" /> - ×5</p>
+                      <p><img src={scratch_els[1]} className="svgs" /><img src={scratch_els[1]} className="svgs" /><img src={scratch_els[1]} className="svgs" /> - ×5</p>
+                      <p><img src={scratch_els[4]} className="svgs" /><img src={scratch_els[4]} className="svgs" /><img src={scratch_els[4]} className="svgs" /> - ×5</p>
+                      <p><img src={scratch_els[7]} className="svgs" /><img src={scratch_els[7]} className="svgs" /><img src={scratch_els[7]} className="svgs" /> - ×5</p>
                   </div>
                   <div className="scrg_win_description_cols">
-                      <p><img src={scratch_elements[2]} className="svgs" /><img src={scratch_elements[2]} className="svgs" /><img src={scratch_elements[2]} className="svgs" /> - ×10</p>
-                      <p><img src={scratch_elements[5]} className="svgs" /><img src={scratch_elements[5]} className="svgs" /><img src={scratch_elements[5]} className="svgs" /> - ×10</p>
-                      <p><img src={scratch_elements[8]} className="svgs" /><img src={scratch_elements[8]} className="svgs" /><img src={scratch_elements[8]} className="svgs" /> - ×10</p>
+                      <p><img src={scratch_els[2]} className="svgs" /><img src={scratch_els[2]} className="svgs" /><img src={scratch_els[2]} className="svgs" /> - ×10</p>
+                      <p><img src={scratch_els[5]} className="svgs" /><img src={scratch_els[5]} className="svgs" /><img src={scratch_els[5]} className="svgs" /> - ×10</p>
+                      <p><img src={scratch_els[8]} className="svgs" /><img src={scratch_els[8]} className="svgs" /><img src={scratch_els[8]} className="svgs" /> - ×10</p>
                   </div>
               </div>
 

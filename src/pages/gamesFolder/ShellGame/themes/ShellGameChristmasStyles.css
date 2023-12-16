@@ -1,0 +1,16 @@
+#ShellGameChristmas .ball
+{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fa232300;
+    font-size: 35px;
+    font-weight:bolder;
+    color: chartreuse;
+}
+
+#ShellGameChristmas .cup
+{
+    background: radial-gradient(circle, #62b8e0, #006a9b);
+}

@@ -1,0 +1,18 @@
+#scratchgamechristmas .scrg_square
+{
+    background: radial-gradient(circle, #7ac3e6, #006a9b);
+}
+#scratchgamechristmas #scratch_wrapper
+{
+    background-color: #ffffff00;
+}
+
+#scratchgamechristmas #scratch, #scratchANDdescription
+{
+    background-color: #ffffff;
+}
+
+#scratchgamechristmas #scratchANDdescription
+{
+    background-color: #050d8344;
+}
