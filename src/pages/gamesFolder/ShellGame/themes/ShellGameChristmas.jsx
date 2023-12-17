@@ -9,7 +9,7 @@ const ShellGameChristmas = ({curMoney, ParentUpdate})=>
     return(
         <div id='ShellGameChristmas'>
             <Snowfall/>
-            <ShellGame curMoney={curMoney} ParentUpdate={ParentUpdate} ballIco="❄️" cupIco="🎄" title='Новогодние наперстки'></ShellGame>
+            <ShellGame curMoney={curMoney} ParentUpdate={ParentUpdate} ballIco="❄️" cupIco="🎄" title='Новогодние наперстки' bntStyle="nyBtn"></ShellGame>
         </div>
    );
 };

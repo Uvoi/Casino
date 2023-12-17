@@ -31,7 +31,7 @@ const ScratchGameChristmas = ({curMoney, ParentUpdate})=>
         <div id='scratchgamechristmas'>
             <Snowfall/>
             {/* <img src={santa} alt="" /> */}
-            <ScratchGame curMoney={curMoney} ParentUpdate={ParentUpdate} scratch_els={scratch_elements} title='Новогодний скретч'></ScratchGame>
+            <ScratchGame curMoney={curMoney} ParentUpdate={ParentUpdate} scratch_els={scratch_elements} bntStyle="nyBtn" title='Новогодний скретч'></ScratchGame>
         </div>
    );
 };

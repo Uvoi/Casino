@@ -35,6 +35,9 @@
     cursor: pointer;
     text-align: center;
     font-size: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* color: rgba(99, 255, 99, 0.479); */
 }
 
@@ -127,4 +130,9 @@
 {
     color: rgb(255, 0, 0);
     font-size: 35px;
+}
+
+.huyt
+{
+    color: rgb(54, 73, 241);
 }

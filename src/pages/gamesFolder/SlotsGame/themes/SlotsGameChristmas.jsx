@@ -29,7 +29,7 @@ const  SlotsGameChristmas = ({curMoney, ParentUpdate})=>
     return(
         <div>
             <Snowfall/>
-            <SlotsGame title = {"Новогодние слоты"} curMoney={curMoney} ParentUpdate={ParentUpdate} slot_els={slot_elements}/>
+            <SlotsGame title = {"Новогодние слоты"} curMoney={curMoney} ParentUpdate={ParentUpdate} slot_els={slot_elements} bntStyle="nyBtn"/>
         </div>
    );
 };

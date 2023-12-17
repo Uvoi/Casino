@@ -7,7 +7,7 @@ import { useNotification } from '../../../components/Notification/Notification';
 
 
 
-const ShellGame = ({curMoney, ParentUpdate, ballIco="", cupIco="", title="Игра в наперстки"}) => {
+const ShellGame = ({curMoney, ParentUpdate, ballIco="", cupIco="", title="Игра в наперстки", bntStyle}) => {
 
   axios.defaults.withCredentials = true;
   const showNotification = useNotification();
@@ -204,7 +204,7 @@ const ShellGame = ({curMoney, ParentUpdate, ballIco="", cupIco="", title="Игр
           disabled={shuffling}
         />
         <span>✯</span>
-        <button onClick={() => checkMoney(moneyCount)} disabled={shuffling||moneyCount==""|| isGame}
+        <button className={bntStyle} onClick={() => checkMoney(moneyCount)} disabled={shuffling||moneyCount==""|| isGame}
           title={(shuffling ? 'Перемешивание' : '') ||
           (isGame ? 'Завершите дейстующую игру' : '')||
           (moneyCount=="" ? 'Внесите ставку' : 'Сделать ставку')}

@@ -1,40 +1,30 @@
 import React from 'react';
-import SlotsGame from '../gamesFolder/SlotsGame/SlotsGame';
 import './PromoStyles.css';
 
-import santa from '../../images/games_themes/slots_game/santa.svg';
-import penguin from '../../images/games_themes/slots_game/penguin.svg';
-import christmas_tree from '../../images/games_themes/slots_game/christmas_tree.svg';
-import snow_maiden from '../../images/games_themes/slots_game/snow_maiden.svg';
-import snowflake from '../../images/games_themes/slots_game/snowflake.svg';
-import gift from '../../images/games_themes/slots_game/gift.svg';
-import kremlin from '../../images/games_themes/slots_game/kremlin.svg';
-import alcoholic from '../../images/games_themes/slots_game/alcoholic.svg';
-import red_caviar from '../../images/games_themes/slots_game/red_caviar.svg';
-import Snowfall from '../../components/Snowfall/Snowfall';
-const Promo = ({curMoney, ParentUpdate})=>
+import GamePreview from '../../components/GamePreview/GamePreview';
+import GameList from '../../components/GamesList/GameList';
+import christmas_slots from '../../images/games_themes/slots_game/christmas_slots.jpg';
+import christmas_shell from '../../images/games_themes/shell_game/shell_game_christmas.jpg';
+import christmas_scratch from '../../images/games_themes/scratch_game/scratch.jpg'
+import roulettes from '../../images/games_themes/roulettes_game/roulettes.jpg'
+import guessing_christmas from '../../images/games_themes/guessing_game/guessing.jpg'
+const Promo = ()=>
 {
     
-    
-    const slot_elements = [
-        santa, //0
-        snow_maiden,  //1
-        christmas_tree,    //2
-        penguin,   //3
-        kremlin,   //4
-        alcoholic,   //5
-        red_caviar, //6
-        gift,    //7
-        snowflake,    //8
-      ];
-
 
 
     return(
         <div id='promo'>
-            <Snowfall/>
-            <SlotsGame title = {"Новогодние слоты"} curMoney={curMoney} ParentUpdate={ParentUpdate} slot_els={slot_elements}/>
-            {/* <p>❄</p> */}
+            <GameList title={"Новогодние игры"}>
+                <GamePreview image = {christmas_slots} title={'Новогодние слоты'} link = {"/games/SlotsGameChristmas"}/>
+                <GamePreview image = {christmas_shell} title={'Новогодние наперстки'} link = {"/games/ShellGameChristmas"}/>
+                <GamePreview image = {christmas_scratch} title={'Новогодний скретч'} link = {"/games/ScratchGameChristmas"}/>
+                <GamePreview image = {roulettes} title={'Н. горизонтальная рулетка'} link = {"/games/RouletteSliderGameChristmas"}/>
+                <GamePreview image = {guessing_christmas} title={'Новогоднее минное поле'} link = {"/games/GuessingGameChristmas"}/>
+            </GameList>
+            <p style={{color:"white", margin:"50px 0 -50px 125px", fontSize:"18px"}}>До конца зимы вас ждут новые <span style={{color:"blue"}}>
+                Новогодние игры</span>. Шансы во всех новогодних играх были повышены на <span style={{color:"red", }}>50% ! </span> 
+            Спешите сыграть, время ограничено!</p>
         </div>
     );
 };

@@ -33,7 +33,7 @@ function App() {
                 setMoney(response.data)
               })
               .catch(error => {
-              console.log("ошибка блять!");
+              console.log("ошибка!");
               console.log(error);
               });
       })

@@ -42,6 +42,19 @@ const Profile = ({ User, ParentUpdate }) => {
     const isValidFullName = (name) => {
       return /^[a-zA-Z0-9\s]{4,16}$/.test(name);
     };
+
+    const del = () => {
+      axios.post('http://127.0.0.1:8000/api/delete_session')
+        .then(response => {
+          console.log(response.data);
+          // использование данных сессии
+        })
+        .catch(error => {
+          console.log("ошибка блять!");
+          console.log(error);
+        });
+        ParentUpdate()
+    }
     
 
 
@@ -56,10 +69,12 @@ const Profile = ({ User, ParentUpdate }) => {
           <p>Имя</p>
           <input type="text" id='profile_name' value={userName ? userName : ""} pattern="^[a-zA-Z0-9\s]{4,16}$" onChange={(e) => setUserName(e.target.value)} />
           <div id="profile_but_save">
+            <button style={{marginRight:"30px"}} onClick={del}>Выйти</button>
             <button onClick={handleSaveClick} disabled={(User.name === userName || !isValidFullName(userName))} 
             title={(!isValidFullName(userName) ? 'Запрещенный символ(ы)' : '') ||
             (User.name === userName ? 'Внесите изменения' : 'Сохранить изменения')}
-            >Сохранить</button>
+            >Сохранить</button> 
+            
           </div>
         </div>
       </div>

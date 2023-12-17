@@ -36,7 +36,7 @@ const Header = ({User, Money, ParentUpdate })=>
             document.getElementById('login').style.display = 'inline-flex';
             document.getElementById('login').style.visibility = 'visible';
         }
-      }, [Money, User]);
+      }, [Money, User, ParentUpdate]);
 
 
       const formatMoney = (value) => {

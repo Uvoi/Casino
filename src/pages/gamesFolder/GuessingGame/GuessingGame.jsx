@@ -5,7 +5,7 @@ import { useNotification } from '../../../components/Notification/Notification';
 import './GuessingGameStyles.css';
 import GamePage from '../../GamePage/GamePage';
 
-const GuessingGame = ({curMoney, ParentUpdate})=>
+const GuessingGame = ({curMoney, ParentUpdate, bntStyle, bombIco="💣", title="Минное поле"})=>
 {
     axios.defaults.withCredentials = true;
     const showNotification = useNotification();
@@ -74,7 +74,7 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
                 ballRef.current.style.backgroundColor = 'rgb(0, 200, 0)';
               } else {
                 ballRef.current.style.backgroundColor = 'red';
-                ballRef.current.innerHTML = '💣';     
+                ballRef.current.innerHTML = bombIco;     
               }
             }
           });
@@ -163,7 +163,7 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
                     ballRefs.current[row-1][col-1].current.style.backgroundColor = 'rgb(200, 0, 0)';
                     ballRefs.current[row-1][col-1].current.style.border = '2px solid white';
               
-                    ballRefs.current[row-1][col-1].current.innerHTML = '💣';                    
+                    ballRefs.current[row-1][col-1].current.innerHTML = bombIco;                    
                 }
                 console.log("lose")
                 sendResultToServer("lose", row);
@@ -215,7 +215,7 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
     <GamePage>
         <div id='guessing_game'>
 
-            <h1>Минное поле</h1>
+            <h1>{title}</h1>
 
 
             <div id="guessing_game_game">
@@ -243,13 +243,13 @@ const GuessingGame = ({curMoney, ParentUpdate})=>
                     disabled = {isGame}
                 />
                 <span>✯</span>
-                <button onClick={() => checkMoney(moneyCount)} disabled={moneyCount==""|isGame} 
+                <button  className={bntStyle} onClick={() => checkMoney(moneyCount)} disabled={moneyCount==""|isGame} 
                   title={(moneyCount=="" ? 'Укажите ставку' : '') ||
                   (isGame ? 'Завершите дейстующую игру' : 'Сделать ставку')}
                 >
                     {'Играть'}
                 </button>
-                <button onClick={() => sendResultToServer("win", curRow)} disabled={(moneyCount === "" || !(isGame && (curRow === 3 || curRow === 5 || curRow === 6)))}
+                <button  className={bntStyle} onClick={() => sendResultToServer("win", curRow)} disabled={(moneyCount === "" || !(isGame && (curRow === 3 || curRow === 5 || curRow === 6)))}
                   title={(moneyCount=="" ? 'Укажите ставку' : '') ||
                   (!isGame ? 'Начните игру(забрать выигрыш можно только на 3,5 или 6 ряду)': "")||
                   (!(isGame && (curRow === 3 || curRow === 5 || curRow === 6)) ? 'Забрать выигрыш можно только на 3,5 или 6 ряду' : 'Забрать выигрыш')

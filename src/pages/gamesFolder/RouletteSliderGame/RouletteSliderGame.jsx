@@ -95,7 +95,7 @@ const prizes20000 = [
  
 
 
-const RouletteSliderGame = ({curMoney, ParentUpdate}) => {
+const RouletteSliderGame = ({curMoney, ParentUpdate, title="Горизонатльная рулетка", bntStyle}) => {
   const [start, setStart] = useState(false);
   const [isGame, setIsGame] = useState(false);
   const [btnIndex, setBtnIndex] = useState(0);
@@ -125,8 +125,7 @@ const RouletteSliderGame = ({curMoney, ParentUpdate}) => {
     //   ...prize,
     //   id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
     // }));
-  
-    console.log("sukaaa")
+
   }, [prizs]);
 
   // var prizeIndex = prizs.length * 4 + 0;
@@ -263,7 +262,7 @@ var prizeList = reproducedPrizeList.map((prize) => ({
   return (
     <GamePage>
         <div id="roulette_slider_game">
-          <h1>Горизонтальная рулетка</h1>
+          <h1>{title}</h1>
             <div id="rsg_wrapper">
                 <div id="rsg">
                     <RoulettePro
@@ -277,13 +276,13 @@ var prizeList = reproducedPrizeList.map((prize) => ({
 
             <div id="rsg_bets">
               <div id="scrg_money">
-                  <button onClick={()=>setBet(1, 100)} disabled={isGame | btnIndex==1}>100✯</button>
-                  <button onClick={()=>setBet(2, 500)} disabled={isGame | btnIndex==2}>500✯</button>
-                  <button onClick={()=>setBet(3, 1000)} disabled={isGame | btnIndex==3}>1 000✯</button>
-                  <button onClick={()=>setBet(4, 5000)} disabled={isGame | btnIndex==4}>5 000✯</button>
-                  <button onClick={()=>setBet(5, 20000)} disabled={isGame | btnIndex==5}>20 000✯</button>
+                  <button className={bntStyle} onClick={()=>setBet(1, 100)} disabled={isGame | btnIndex==1}>100✯</button>
+                  <button className={bntStyle} onClick={()=>setBet(2, 500)} disabled={isGame | btnIndex==2}>500✯</button>
+                  <button className={bntStyle} onClick={()=>setBet(3, 1000)} disabled={isGame | btnIndex==3}>1 000✯</button>
+                  <button className={bntStyle} onClick={()=>setBet(4, 5000)} disabled={isGame | btnIndex==4}>5 000✯</button>
+                  <button className={bntStyle} onClick={()=>setBet(5, 20000)} disabled={isGame | btnIndex==5}>20 000✯</button>
               </div>
-              <button onClick={play} disabled={isGame | !btnIndex} id='rsg_playBtn'>
+              <button  className={bntStyle} onClick={play} disabled={isGame | !btnIndex} id='rsg_playBtn'>
                   Играть
               </button>
             </div>

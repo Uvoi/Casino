@@ -1,6 +1,6 @@
 import React from 'react';
 import "./GamePageStyles.css"
-const GamePage = ({children})=>
+const GamePage = ({children, User})=>
 {
     return(
         <div id='game_page'>

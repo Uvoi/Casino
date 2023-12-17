@@ -27,7 +27,7 @@ const slot_elements = [
   apple_svg,    //8
 ];
 
-const SlotsGame = ({curMoney, ParentUpdate, title="Слоты", slot_els = slot_elements}) => {
+const SlotsGame = ({curMoney, ParentUpdate, title="Слоты", slot_els = slot_elements, bntStyle}) => {
   axios.defaults.withCredentials = true;
   const [moneyCount, setMoneyCount] = useState("");
   const showNotification = useNotification();
@@ -202,7 +202,7 @@ const SlotsGame = ({curMoney, ParentUpdate, title="Слоты", slot_els = slot_
             onChange={(e) => formatMoneyInput(e.target.value)}
           />
           <span>✯</span>
-          <button onClick={playSlots} disabled={isGame| moneyCount==""}>Играть</button>
+          <button className={bntStyle} onClick={playSlots} disabled={isGame| moneyCount==""}>Играть</button>
         </div>
       </div>
     </GamePage>

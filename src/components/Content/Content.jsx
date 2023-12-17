@@ -15,6 +15,8 @@ import RouletteSliderGame from '../../pages/gamesFolder/RouletteSliderGame/Roule
 import SlotsGameChristmas from '../../pages/gamesFolder/SlotsGame/themes/SlotsGameChristmas';
 import ShellGameChristmas from '../../pages/gamesFolder/ShellGame/themes/ShellGameChristmas';
 import ScratchGameChristmas from '../../pages/gamesFolder/ScratchGame/themes/ScratchGameChristmas';
+import RouletteSliderGameChristmas from '../../pages/gamesFolder/RouletteSliderGame/theme/RouletteSliderGameChristmas';
+import GuessingGameChristmas from '../../pages/gamesFolder/GuessingGame/theme/GuessingGameChristmas';
 
 const Content = ({User, Money, childUpdate})=>
 {
@@ -27,7 +29,7 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/promo' element={<Promo curMoney={Money} ParentUpdate={childUpdate}/>} />
                     <Route exact path='/contact' element={<Contact />} />
                     <Route exact path='/profile' element={<Profile User={User} ParentUpdate={childUpdate}/>} />
-                    <Route exact path='/game' element={<GamePage />} />
+                    <Route exact path='/game' element={<GamePage User={User} />} />
                     <Route exact path='/games/shellgame' element={<ShellGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/guessinggame' element={<GuessingGame curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/slotsgame' element={<SlotsGame curMoney={Money} ParentUpdate={childUpdate} />} />
@@ -37,6 +39,8 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/games/SlotsGameChristmas' element={<SlotsGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/ShellGameChristmas' element={<ShellGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
                     <Route exact path='/games/ScratchGameChristmas' element={<ScratchGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/RouletteSliderGameChristmas' element={<RouletteSliderGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
+                    <Route exact path='/games/GuessingGameChristmas' element={<GuessingGameChristmas curMoney={Money} ParentUpdate={childUpdate} />} />
                 </Routes>
             </Router>
         </div>

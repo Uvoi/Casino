@@ -32,7 +32,7 @@ var scratch_elements = [
 
   
 
-const ScratchGame = ({curMoney, ParentUpdate, scratch_els=scratch_elements, title="Скретч"})=>
+const ScratchGame = ({curMoney, ParentUpdate, scratch_els=scratch_elements, title="Скретч", bntStyle})=>
 {
 
     axios.defaults.withCredentials = true;
@@ -235,16 +235,16 @@ const ScratchGame = ({curMoney, ParentUpdate, scratch_els=scratch_elements, titl
 
           <div id="scrg_money">
 
-            <button onClick={()=>setBet(1, 100)} disabled={isGame | btnIndex==1}>100✯</button>
-            <button onClick={()=>setBet(2, 300)} disabled={isGame | btnIndex==2}>300✯</button>
-            <button onClick={()=>setBet(3, 500)} disabled={isGame | btnIndex==3}>500✯</button>
-            <button onClick={()=>setBet(4, 1000)} disabled={isGame | btnIndex==4}>1 000✯</button>
-            <button onClick={()=>setBet(5, 5000)} disabled={isGame | btnIndex==5}>5 000✯</button>
-            <button onClick={()=>setBet(6, 20000)} disabled={isGame | btnIndex==6}>20 000✯</button>
+            <button className={bntStyle} onClick={()=>setBet(1, 100)} disabled={isGame | btnIndex==1}>100✯</button>
+            <button className={bntStyle} onClick={()=>setBet(2, 300)} disabled={isGame | btnIndex==2}>300✯</button>
+            <button className={bntStyle} onClick={()=>setBet(3, 500)} disabled={isGame | btnIndex==3}>500✯</button>
+            <button className={bntStyle} onClick={()=>setBet(4, 1000)} disabled={isGame | btnIndex==4}>1 000✯</button>
+            <button className={bntStyle} onClick={()=>setBet(5, 5000)} disabled={isGame | btnIndex==5}>5 000✯</button>
+            <button className={bntStyle} onClick={()=>setBet(6, 20000)} disabled={isGame | btnIndex==6}>20 000✯</button>
 
 
           </div>
-            <button onClick={play} disabled={isGame | !btnIndex} id='srcg_playBtn'>
+            <button className={bntStyle} onClick={play} disabled={isGame | !btnIndex} id='srcg_playBtn'>
               Играть
             </button>
         </div>

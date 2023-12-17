@@ -42,3 +42,25 @@ input:read-only
 {
     color: rgb(73, 73, 73);
 }
+
+
+.nyBtn {
+    color: white;
+    background: #002079;
+    border: none;
+    transition: background 0.4s, color 0.4s; /* добавлено свойство transition */
+    /* border-radius: 1vh; */
+}
+
+.nyBtn:disabled {
+    color: rgb(155, 155, 155);
+    background: #00144d;
+    cursor: not-allowed;
+    transition: background 0.4s, color 0.4s; /* добавлено свойство transition */
+}
+
+.nyBtn:hover:enabled
+{
+    transition: background 0.4s;
+    background: rgb(3, 24, 219);
+}
