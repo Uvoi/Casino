@@ -52,7 +52,7 @@ const Games = (props) => {
             </GameList>
 
 
-            <GameList title={"Удача"}>
+            <GameList title={"Испытай удачу"}>
                 <GamePreview image = {mine} title={'Минное поле'} link = {"/games/guessinggame"}/>
                 <GamePreview image = {roulette} title={'Рулетка'} link = {"/games/roulettegame"}/>
                 <GamePreview image = {rouletteslider} title={'Горизонтальная рулетка'} link = {"/games/rouletteslidergame"}/>

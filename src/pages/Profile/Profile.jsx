@@ -4,9 +4,10 @@ import "./ProfileStyles.css";
 import axios from 'axios';
 import BanckCard from '../../components/BankCard/BankCard';
 import { useNotification } from '../../components/Notification/Notification';
-
+import { useNavigate } from 'react-router-dom';
 
 const Profile = ({ User, ParentUpdate }) => {
+  const navigate = useNavigate();
 
   const showNotification = useNotification();
     axios.defaults.withCredentials = true;
@@ -50,10 +51,11 @@ const Profile = ({ User, ParentUpdate }) => {
           // использование данных сессии
         })
         .catch(error => {
-          console.log("ошибка блять!");
+          console.log("ошибка!");
           console.log(error);
         });
         ParentUpdate()
+        navigate('/');
     }
     
 
@@ -78,7 +80,7 @@ const Profile = ({ User, ParentUpdate }) => {
           </div>
         </div>
       </div>
-      <hr/>
+      <hr className='separ'/>
       <h2>Пополнение и вывод средств</h2>
       <div id="profile_cards">
         <BanckCard ParentUpdate={ParentUpdate}/>

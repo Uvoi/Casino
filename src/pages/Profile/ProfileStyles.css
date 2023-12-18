@@ -88,10 +88,44 @@
   margin: 5% 0 4% 0;
 
 
+
 }
 
 #Profile_wrapper
 {
   margin-top: 15vh;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+  
 }
 
+#Profile_wrapper .separ
+{
+  margin-left: 21%;
+
+
+}
+
+.separ::after
+{
+    background: #a1006c;
+    content: "";
+    height: 14px;
+    margin: -8px auto auto -8px;
+    position: absolute;
+    transform: rotate(-45deg);
+    width: 14px;
+    left: 25%;
+    margin-left: 24.3%;
+}
+.separ 
+{
+    text-align: center;
+    border-top: 2px solid #a1006c;
+    width: 60%;
+    clear: both;
+    margin-left:0;
+    opacity: 0.9;
+    margin: 70px 0 60px 0;
+}

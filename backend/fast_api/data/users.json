@@ -3,7 +3,7 @@
     "name": "baobab",
     "email": "q@q",
     "password": "qqqqqq",
-    "money": 4977411
+    "money": 4974424
   },
   {
     "name": "user",
@@ -58,5 +58,11 @@
     "email": "nicoursed@mail.ru",
     "password": "qwerty12345678",
     "money": 40000
+  },
+  {
+    "name": "user",
+    "email": "q@qqq",
+    "password": "qqqqqq",
+    "money": 0
   }
 ]

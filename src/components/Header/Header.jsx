@@ -15,13 +15,16 @@ const Header = ({User, Money, ParentUpdate })=>
 
     const [money, setMoney] = useState(null);
     const [user, setUser] = useState({ name: "", email: "" });
+    const [modalActive, setModalActive] = useState(false);
     
 
     useEffect(() => {
         setUser(User);
         setMoney(Money);
-
-        if ((user["name"] !== undefined) && (user["email"] !== undefined)) 
+        
+        // console.log(User["name"],"-name")
+        // console.log(User["email"],"-email")
+        if ((User["name"] != undefined) && (User["email"] != undefined)) 
         {
             document.getElementById('login').style.display = 'none';
             document.getElementById('login').style.visibility = 'hidden';
@@ -29,13 +32,14 @@ const Header = ({User, Money, ParentUpdate })=>
             document.getElementById('user').style.visibility = 'visible';
         }
 
-        if ((user["name"] === "") && (user["email"] === "")) 
+        if ((User["name"] == undefined) && (User["email"] == undefined)) 
         {                           
             document.getElementById('user').style.display = 'none';
             document.getElementById('user').style.visibility = 'hidden';
             document.getElementById('login').style.display = 'inline-flex';
             document.getElementById('login').style.visibility = 'visible';
         }
+        // console.log("obnovaa")
       }, [Money, User, ParentUpdate]);
 
 
@@ -49,7 +53,7 @@ const Header = ({User, Money, ParentUpdate })=>
 
 
 
-    const [modalActive, setModalActive] = useState(false)
+
     return(
         <div id="header" className="row">
         <div id="logo" className="col-lg-2">

@@ -16,8 +16,13 @@ const Snowfall = ({ children }) => {
       snowflake.style.fontSize = `${Math.random() * 20 + 10}px`; // Размер символа
 
       // Используйте ref, чтобы получить доступ к контейнеру снежинок
-      const snowflakesContainer = document.getElementById('snowflakes-container');
-      snowflakesContainer.appendChild(snowflake);
+      try {
+        const snowflakesContainer = document.getElementById('snowflakes-container');
+        snowflakesContainer.appendChild(snowflake);
+      } catch (error) {
+        
+      }
+
 
       snowflake.addEventListener('animationiteration', () => {
         snowflake.style.left = `${endX}px`;

@@ -12,13 +12,10 @@ import scratch from '../../images/scratch.jpg'
 import rouletteslider from '../../images/rouletteslider.png'
 import christmas_slots from '../../images/games_themes/slots_game/christmas_slots.jpg';
 import christmas_shell from '../../images/games_themes/shell_game/shell_game_christmas.jpg';
-import christmas_scratch from '../../images/games_themes/scratch_game/scratch.jpg'
+import "./HomeStyles.css"
 
 const Home = (props)=>
-{
-
-  // const [user, setUser] = useState({ name: "", email: "" });
-  
+{ 
 
   axios.defaults.withCredentials = true;
   const check = () => {
@@ -70,7 +67,8 @@ const Home = (props)=>
       <button onClick={del}>delete</button>
       <button onClick={get_money}>mon</button> */}
 
-            <br style={{margin:"50px"}}/>
+            {/* <br style={{margin:"50px"}}/> */}
+            <hr className='separ'/>
             <GameList title={"Популярные игры"}>
                 <GamePreview image = {shell} title={'Наперстки'} link = {"/games/shellgame"}/>
                 <GamePreview image = {mine} title={'Минное поле'} link = {"/games/guessinggame"}/>
@@ -81,6 +79,7 @@ const Home = (props)=>
                 <GamePreview image = {christmas_slots} title={'Новогодние слоты'} link = {"/games/SlotsGameChristmas"}/>
                 <GamePreview image = {christmas_shell} title={'Новогодние наперстки'} link = {"/games/ShellGameChristmas"}/>
             </GameList>
+            <a href="/profile">aaaaaaaaaaaaa</a>
     </div>
   );
 };

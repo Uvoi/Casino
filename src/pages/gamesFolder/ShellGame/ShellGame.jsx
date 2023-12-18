@@ -35,30 +35,38 @@ const ShellGame = ({curMoney, ParentUpdate, ballIco="", cupIco="", title="Игр
 
   async function cupsUp()
   {
-    controlsCup1.start({
-      y:-50,
-      // transition: {duration: 2},
-    });
-    controlsCup2.start({
-      y:-50,
-      // transition: {duration: 2},
-    });
-    await controlsCup3.start({
-      y:-50,
-      // transition: {duration: 2},
-    });
-    controlsBall.start({
-      // transition: {duration: },
-      opacity:1,
-      y:70,
-    });
+    try {
+      controlsCup1.start({
+        y:-50,
+        // transition: {duration: 2},
+      });
+      controlsCup2.start({
+        y:-50,
+        // transition: {duration: 2},
+      });
+      await controlsCup3.start({
+        y:-50,
+        // transition: {duration: 2},
+      });
+      controlsBall.start({
+        // transition: {duration: },
+        opacity:1,
+        y:70,
+      });
+    } catch (error) {
+      
+    }
   }
 
   async function cupsDown() {
-    controlsCup1.start({ y: 0 });
-    controlsCup2.start({ y: 0 });
-    await controlsCup3.start({ y: 0 });
-    controlsBall.start({ y: 70 });
+    try {
+      controlsCup1.start({ y: 0 });
+      controlsCup2.start({ y: 0 });
+      await controlsCup3.start({ y: 0 });
+      controlsBall.start({ y: 70 });
+    } catch (error) {
+      
+    }
 }
 
 
@@ -133,26 +141,30 @@ const ShellGame = ({curMoney, ParentUpdate, ballIco="", cupIco="", title="Игр
     setCupsIsUp(false);
     await cupsDown()
 
-    controlsCup1.start({
-      x: ['193%', '0%', '193%', '0%', '193%', '0%', '193%', '0%', '193%', '0%'],
-      transition: {duration: 2},
-    });
-
-    
-    controlsCup2.start({
-      x: ['193%', '0%', '-193%', '0%', '193%', '0%', '-193%', '0%'],
-      transition: {duration: 2},
-    });
-
-    // controlsCup3.start({
-    //   x: ['-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%'],
-    //   transition: {duration: 2},
-    // });
-
-    await controlsCup3.start({
-      x: ['-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%'],
-      transition: {duration: 2},
-    });
+    try {
+      controlsCup1.start({
+        x: ['193%', '0%', '193%', '0%', '193%', '0%', '193%', '0%', '193%', '0%'],
+        transition: {duration: 2},
+      });
+  
+      
+      controlsCup2.start({
+        x: ['193%', '0%', '-193%', '0%', '193%', '0%', '-193%', '0%'],
+        transition: {duration: 2},
+      });
+  
+      // controlsCup3.start({
+      //   x: ['-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%'],
+      //   transition: {duration: 2},
+      // });
+  
+      await controlsCup3.start({
+        x: ['-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%', '-193%', '0%'],
+        transition: {duration: 2},
+      });
+    } catch (error) {
+      
+    }
 
     setShuffling(false);
   };

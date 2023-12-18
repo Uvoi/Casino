@@ -1,0 +1,20 @@
+#promo
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#promo_wrapper
+{
+    background-color: #ffffff3f;
+    backdrop-filter: blur(100vh);
+    margin: 0 20vh;
+    padding: 40px 0px;
+}
+
+#promo .game_wrapper
+{
+    margin: 0;
+    padding: 0;
+}
