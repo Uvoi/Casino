@@ -22,6 +22,8 @@ function Login({ active, setActive, ParentUpdate }) {
       password: password,
     };
 
+    if (userDataWithUsername.name!="" && userDataWithUsername.email !="")
+    {    
     axios
       .post(apiUrl, userDataWithUsername, { withCredentials: true })
       .then((response) => {
@@ -42,6 +44,7 @@ function Login({ active, setActive, ParentUpdate }) {
           setExeption("Неизвестная ошибка: бэкендер умер. Попробуйте позже!");
         }
       });
+    }
   };
 
   return (
@@ -68,11 +71,7 @@ function Login({ active, setActive, ParentUpdate }) {
       <div id="but_login">
         <motion.button 
           type="submit"
-          // initial = {{x: -100}}
-          // whileHover={{ x: 0}}
-          // transition={{
-          //   duration: 5,
-          // }}
+          disabled={!password || !email}
         >Далее</motion.button>
       </div>
       <p id="login_info">

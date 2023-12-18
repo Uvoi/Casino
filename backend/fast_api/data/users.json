@@ -3,7 +3,7 @@
     "name": "baobab",
     "email": "q@q",
     "password": "qqqqqq",
-    "money": 4974424
+    "money": 3200609
   },
   {
     "name": "user",
@@ -63,6 +63,18 @@
     "name": "user",
     "email": "q@qqq",
     "password": "qqqqqq",
+    "money": 0
+  },
+  {
+    "name": "user",
+    "email": "0@0",
+    "password": "12345677",
+    "money": 0
+  },
+  {
+    "name": "user",
+    "email": "0@3",
+    "password": "000009876543456789",
     "money": 0
   }
 ]

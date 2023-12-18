@@ -56,6 +56,7 @@ const Content = ({User, Money, childUpdate})=>
                     <Route exact path='/games' element={<Games />} />
                     <Route exact path='/promo' element={<Promo curMoney={Money} ParentUpdate={childUpdate}/>} />
                     <Route exact path='/contact' element={<Contact />} />
+                    <Route exact path='' element={<Null />} />
                     <Route
                         exact path='/profile'
                         element={isUserAuthenticated() ? <Profile User={User} ParentUpdate={childUpdate} /> : <Null ParentUpdate={childUpdate} auth={true}/>}
@@ -65,8 +66,9 @@ const Content = ({User, Money, childUpdate})=>
                     {/* <Route exact path='/games/shellgame' element={<ShellGame curMoney={Money} ParentUpdate={childUpdate} />} /> */}
                     <Route
                         exact path='/games/shellgame'
-                        element={isUserAuthenticated() ? <shellgame curMoney={Money} ParentUpdate={childUpdate}/> : <Null ParentUpdate={childUpdate} auth={true}/>}
+                        element={isUserAuthenticated() ? <ShellGame curMoney={Money} ParentUpdate={childUpdate}/> : <Null ParentUpdate={childUpdate} auth={true}/>}
                     />
+
 
                     <Route
                         exact path='/games/guessinggame'

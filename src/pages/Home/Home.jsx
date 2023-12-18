@@ -79,7 +79,7 @@ const Home = (props)=>
                 <GamePreview image = {christmas_slots} title={'Новогодние слоты'} link = {"/games/SlotsGameChristmas"}/>
                 <GamePreview image = {christmas_shell} title={'Новогодние наперстки'} link = {"/games/ShellGameChristmas"}/>
             </GameList>
-            <a href="/profile">aaaaaaaaaaaaa</a>
+            {/* <a href="/profile">aaaaaaaaaaaaa</a> */}
     </div>
   );
 };
