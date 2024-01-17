@@ -1,7 +1,7 @@
 import json
 from fastapi import APIRouter, HTTPException, Response, Depends
 from uuid import UUID, uuid4
-from endpoints.login import create_user, load_users_from_file, save_users_to_file
+from endpoints.login import create_user, load_users_from_file, upate_user
 
 from user import User
 from auth import auth
@@ -76,7 +76,7 @@ async def change_name(new_name: str, session_data: auth.SessionData = Depends(au
         await auth.backend.update(session_id, session_data)
 
         # Сохраните обновленные данные пользователей обратно в файл
-        save_users_to_file(existing_users)
+        upate_user(found_user)
 
         return {"message": "Name updated successfully"}
 
