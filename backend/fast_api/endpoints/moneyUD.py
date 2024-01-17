@@ -2,14 +2,12 @@ from fastapi import APIRouter, HTTPException, Response, Depends
 from uuid import UUID, uuid4
 from user import *  
 from auth import auth
-from endpoints.login import load_users_from_file, save_users_to_file
+from endpoints.login import load_users_from_file, upate_user
 
 
 
 router = APIRouter()
 
-
-users_file = 'data/users.json'
 
 
 
@@ -37,12 +35,15 @@ async def moneyUD(
 
         if card_operation == "moneyUp":
             found_user["money"] = int(found_user["money"]) + int(card_money_count)
-            save_users_to_file(existing_users)
+            upate_user(found_user)
 
         elif card_operation == "moneyDown":
+            print('vivod')
             if int(found_user["money"]) >= int(card_money_count):
+                print('зашел в if')
                 found_user["money"] = int(found_user["money"]) - int(card_money_count)
-                save_users_to_file(existing_users)
+                print(f"конечное значение монет: {found_user["money"]}")
+                upate_user(found_user)
             else: raise HTTPException(status_code=401, detail="Недостаточно средств")
 
         else : raise HTTPException(status_code=402, detail="invalid operation")
