@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Response, Depends
 from uuid import UUID, uuid4
 from user import *  
 from auth import auth
-from endpoints.login import load_users_from_file, save_users_to_file
+from endpoints.login import load_users_from_file, upate_user
 import random
 import math
 from typing import List
@@ -90,11 +90,11 @@ async def shellgame_result(shellgame_result: Shellgame_result, session_data: aut
 
         if shellgame_result.result == "win":
             found_user["money"] = int(found_user["money"]) + shellgame_result.bet*2
-            save_users_to_file(existing_users)
+            upate_user(found_user)
 
         elif shellgame_result.result == "lose":
             found_user["money"] = int(found_user["money"]) - shellgame_result.bet
-            save_users_to_file(existing_users)
+            upate_user(found_user)
 
         else : raise HTTPException(status_code=402, detail="invalid operation")
 
@@ -160,11 +160,11 @@ async def guessinggame_result(guessinggame_result: GuessingGame_result, session_
 
         if guessinggame_result.result == "win":
             found_user["money"] = int(found_user["money"]) + math.ceil(guessinggame_result.bet*guessinggame_result.mult)
-            save_users_to_file(existing_users)
+            upate_user(found_user)
 
         elif guessinggame_result.result == "lose":
             found_user["money"] = int(found_user["money"]) - guessinggame_result.bet
-            save_users_to_file(existing_users)
+            upate_user(found_user)
 
         else : raise HTTPException(status_code=402, detail="invalid operation")
 
@@ -197,12 +197,12 @@ async def slotsgame(slots_game: SlotsGame, session_data: auth.SessionData = Depe
             element = random.choices(range(9), weights=probabilities)
             random_numbers = element + element + element
             found_user["money"] = int(found_user["money"]) + slots_game.bet*(9-element[0])
-            save_users_to_file(existing_users)
+            upate_user(found_user)
 
         else:
             random_numbers = random.choices(range(9), k=3)
             found_user["money"] = int(found_user["money"]) - slots_game.bet
-            save_users_to_file(existing_users)
+            upate_user(found_user)
 
 
         print(random_numbers)
@@ -225,7 +225,7 @@ async def roulettegame_result(rg: RouletteGame_result, session_data: auth.Sessio
 
         found_user["money"] = int(found_user["money"]) + rg.bet*(rg.sumOfMults)
         found_user["money"] = int(found_user["money"]) - rg.bet*rg.betsCount
-        save_users_to_file(existing_users)
+        upate_user(found_user)
 
 
 
@@ -274,7 +274,7 @@ async def scratchgame_result(scrg_result: Scratchgame_result, session_data: auth
         
         print(res)
         found_user["money"] = int(found_user["money"]) + res
-        save_users_to_file(existing_users)
+        upate_user(found_user)
 
 
     return scratchgame_ar,res
@@ -362,7 +362,7 @@ async def rouletteslidergame_result(rsg: RouletteSliderGame_result, session_data
         
         # print(res)
         found_user["money"] = int(found_user["money"]) + res
-        save_users_to_file(existing_users)
+        upate_user(found_user)
 
 
     return res
